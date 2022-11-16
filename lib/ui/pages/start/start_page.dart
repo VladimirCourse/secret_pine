@@ -16,7 +16,7 @@ class StartPage extends StatelessWidget {
         fullscreenDialog: true,
         builder: (_) => BlocProvider(
           create: (_) => PineBloc(
-            transmitRepository: context.read(),
+            pineRepository: context.read(),
           ),
           child: const PinePage(),
         ),
@@ -30,7 +30,7 @@ class StartPage extends StatelessWidget {
         fullscreenDialog: true,
         builder: (_) => BlocProvider(
           create: (_) => HumanBloc(
-            transmitRepository: context.read(),
+            humanRepository: context.read(),
           ),
           child: const HumanPage(),
         ),

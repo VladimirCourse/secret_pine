@@ -2,21 +2,21 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:secret_pine/repository/transmit/transmit_repository.dart';
+import 'package:secret_pine/repository/human/human_repository.dart';
 
 part 'human_bloc.freezed.dart';
 part 'human_event.dart';
 part 'human_state.dart';
 
 class HumanBloc extends Bloc<HumanEvent, HumanState> {
-  final TransmitRepository transmitRepository;
+  final HumanRepository humanRepository;
 
   StreamSubscription? _dataSubscription;
 
   HumanBloc({
-    required this.transmitRepository,
-  }) : super(HumanState(name: transmitRepository.userName)) {
-    _dataSubscription = transmitRepository.dataStream.listen((event) async {
+    required this.humanRepository,
+  }) : super(HumanState(name: humanRepository.userName)) {
+    _dataSubscription = humanRepository.dataStream.listen((event) async {
       print(event);
       event.mapOrNull(
 
@@ -46,7 +46,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     try {
       emit(state.copyWith(isTransmitting: true, isLoading: true));
 
-      await transmitRepository.start(TransmitMode.human);
+      await humanRepository.start();
 
       emit(state.copyWith(isLoading: false));
     } catch (ex) {
@@ -58,7 +58,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
 
   void _handleSendMessage(_SendMessage event, Emitter<HumanState> emit) async {
     try {
-      await transmitRepository.sendMessage(event.message);
+      await humanRepository.sendMessage(event.message);
     } catch (ex) {
       print(ex);
     }
@@ -66,7 +66,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
 
   void _handleStopTransmit(_StopTransmit event, Emitter<HumanState> emit) async {
     try {
-      await transmitRepository.stop();
+      await humanRepository.stop();
 
       emit(state.copyWith(isTransmitting: false));
     } catch (ex) {

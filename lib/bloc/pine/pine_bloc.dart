@@ -2,39 +2,25 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:secret_pine/repository/transmit/transmit_repository.dart';
+import 'package:secret_pine/repository/human/human_repository.dart';
+import 'package:secret_pine/repository/pine/pine_repository.dart';
 
 part 'pine_bloc.freezed.dart';
 part 'pine_event.dart';
 part 'pine_state.dart';
 
 class PineBloc extends Bloc<PineEvent, PineState> {
-  final TransmitRepository transmitRepository;
+  final PineRepository pineRepository;
 
   StreamSubscription? _dataSubscription;
 
   PineBloc({
-    required this.transmitRepository,
-  }) : super(PineState(name: transmitRepository.userName)) {
-    _dataSubscription = transmitRepository.dataStream.listen((event) async {
-      print(event);
-      event.mapOrNull(
-
-          // startAudio: (_) async {
-          //   _isReceivingData = true;
-          //   add(const PineEvent.refreshDevices());
-          //   await audioRepository.startPlay();
-          // },
-          // audioData: (data) async {
-          //   await audioRepository.writeAudioSample(data.data);
-          // },
-          // stopAudio: (_) async {
-          //   await audioRepository.stopPlay();
-          //   add(const PineEvent.refreshDevices());
-          //   _isReceivingData = false;
-          // },
-          );
-    });
+    required this.pineRepository,
+  }) : super(PineState(name: pineRepository.userName)) {
+    // _dataSubscription = transmitRepository.dataStream.listen((event) async {
+    //   print(event);
+    //   event.mapOrNull();
+    // });
 
     on<_StartTransmit>(_handleStartTransmit);
     on<_RefreshData>(_handleRefreshData);
@@ -45,7 +31,7 @@ class PineBloc extends Bloc<PineEvent, PineState> {
     try {
       emit(state.copyWith(isListening: true, isLoading: true));
 
-      await transmitRepository.start(TransmitMode.pine);
+      await pineRepository.start();
 
       emit(state.copyWith(isLoading: false));
     } catch (ex) {
@@ -57,7 +43,7 @@ class PineBloc extends Bloc<PineEvent, PineState> {
 
   void _handleStopTransmit(_StopTransmit event, Emitter<PineState> emit) async {
     try {
-      await transmitRepository.stop();
+      await pineRepository.stop();
 
       emit(state.copyWith(isListening: false));
     } catch (ex) {

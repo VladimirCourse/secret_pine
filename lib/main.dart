@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:secret_pine/repository/transmit/nearby_transmit_repository.dart';
-import 'package:secret_pine/repository/transmit/transmit_repository.dart';
+import 'package:secret_pine/repository/human/nearby_human_repository.dart';
+import 'package:secret_pine/repository/human/human_repository.dart';
 import 'package:provider/provider.dart';
+import 'package:secret_pine/repository/pine/nearby_pine_repository.dart';
+import 'package:secret_pine/repository/pine/pine_repository.dart';
 import 'package:secret_pine/ui/pages/start/start_page.dart';
 
 void main() {
@@ -15,9 +17,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<TransmitRepository>(
-          lazy: false,
-          create: (_) => NearbyTransmitRepository(),
+        Provider<HumanRepository>(
+          create: (_) => NearbyHumanRepository(),
+          dispose: (_, repository) => repository.close(),
+        ),
+        Provider<PineRepository>(
+          create: (_) => NearbyPineRepository(),
           dispose: (_, repository) => repository.close(),
         ),
       ],

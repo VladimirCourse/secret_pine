@@ -3,24 +3,22 @@ import 'package:secret_pine/model/data_event_model.dart';
 import 'package:secret_pine/model/device_model.dart';
 import 'package:secret_pine/model/device_event_model.dart';
 
-enum TransmitMode { pine, human }
-
-abstract class TransmitRepository {
-  TransmitMode get mode;
-
+abstract class HumanRepository {
   String get userName;
-
-  List<DeviceModel> get devices;
 
   Stream<DeviceEventModel> get devicesStream;
 
   Stream<DataEventModel> get dataStream;
 
-  Future<void> start(TransmitMode mode);
+  Future<void> start();
 
   Future<void> sendMessage(String message);
 
-  Future<void> sendFile(String filePath);
+  Future<void> sendMessagesRequest();
+
+  Future<void> sendImage(String filePath);
+
+  Future<void> sendImageRequest();
 
   Future<void> stop();
 
