@@ -1,0 +1,52 @@
+name: secret_pine
+description: A new Flutter project.
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ioc
+  provider: ^6.0.0
+
+  # state management
+  bloc: ^8.0.0
+  flutter_bloc: ^8.0.0
+
+  # ui
+  cupertino_icons: ^1.0.2
+  
+  # storage
+  hive: ^2.0.0
+
+  # platform tools
+  sound_stream:
+    git:
+      url: https://github.com/AlexanderHorielko/flutter-sound-stream.git
+      ref: android-fix
+  audioplayers: ^1.1.1 
+  nearby_connections: ^3.2.0 
+  sound_mode: ^2.0.2 
+
+  # util
+  freezed_annotation: ^2.1.0
+  rxdart: ^0.27.6
+  mock_data: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  freezed: ^2.1.0+1
+  build_runner: ^2.2.0
+
+flutter:
+  uses-material-design: true
