@@ -439,7 +439,7 @@ abstract class _StopTransmit implements PineEvent {
 mixin _$PineState {
   String get name => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isListening => throw _privateConstructorUsedError;
+  bool get isTransmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PineStateCopyWith<PineState> get copyWith =>
@@ -451,7 +451,7 @@ abstract class $PineStateCopyWith<$Res> {
   factory $PineStateCopyWith(PineState value, $Res Function(PineState) then) =
       _$PineStateCopyWithImpl<$Res, PineState>;
   @useResult
-  $Res call({String name, bool isLoading, bool isListening});
+  $Res call({String name, bool isLoading, bool isTransmitting});
 }
 
 /// @nodoc
@@ -469,7 +469,7 @@ class _$PineStateCopyWithImpl<$Res, $Val extends PineState>
   $Res call({
     Object? name = null,
     Object? isLoading = null,
-    Object? isListening = null,
+    Object? isTransmitting = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -480,9 +480,9 @@ class _$PineStateCopyWithImpl<$Res, $Val extends PineState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isListening: null == isListening
-          ? _value.isListening
-          : isListening // ignore: cast_nullable_to_non_nullable
+      isTransmitting: null == isTransmitting
+          ? _value.isTransmitting
+          : isTransmitting // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -494,7 +494,7 @@ abstract class _$$_DataCopyWith<$Res> implements $PineStateCopyWith<$Res> {
       __$$_DataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, bool isLoading, bool isListening});
+  $Res call({String name, bool isLoading, bool isTransmitting});
 }
 
 /// @nodoc
@@ -508,7 +508,7 @@ class __$$_DataCopyWithImpl<$Res> extends _$PineStateCopyWithImpl<$Res, _$_Data>
   $Res call({
     Object? name = null,
     Object? isLoading = null,
-    Object? isListening = null,
+    Object? isTransmitting = null,
   }) {
     return _then(_$_Data(
       name: null == name
@@ -519,9 +519,9 @@ class __$$_DataCopyWithImpl<$Res> extends _$PineStateCopyWithImpl<$Res, _$_Data>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isListening: null == isListening
-          ? _value.isListening
-          : isListening // ignore: cast_nullable_to_non_nullable
+      isTransmitting: null == isTransmitting
+          ? _value.isTransmitting
+          : isTransmitting // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -531,7 +531,9 @@ class __$$_DataCopyWithImpl<$Res> extends _$PineStateCopyWithImpl<$Res, _$_Data>
 
 class _$_Data implements _Data {
   const _$_Data(
-      {required this.name, this.isLoading = false, this.isListening = false});
+      {required this.name,
+      this.isLoading = false,
+      this.isTransmitting = false});
 
   @override
   final String name;
@@ -540,11 +542,11 @@ class _$_Data implements _Data {
   final bool isLoading;
   @override
   @JsonKey()
-  final bool isListening;
+  final bool isTransmitting;
 
   @override
   String toString() {
-    return 'PineState(name: $name, isLoading: $isLoading, isListening: $isListening)';
+    return 'PineState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting)';
   }
 
   @override
@@ -555,12 +557,12 @@ class _$_Data implements _Data {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.isListening, isListening) ||
-                other.isListening == isListening));
+            (identical(other.isTransmitting, isTransmitting) ||
+                other.isTransmitting == isTransmitting));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, isLoading, isListening);
+  int get hashCode => Object.hash(runtimeType, name, isLoading, isTransmitting);
 
   @JsonKey(ignore: true)
   @override
@@ -573,14 +575,14 @@ abstract class _Data implements PineState {
   const factory _Data(
       {required final String name,
       final bool isLoading,
-      final bool isListening}) = _$_Data;
+      final bool isTransmitting}) = _$_Data;
 
   @override
   String get name;
   @override
   bool get isLoading;
   @override
-  bool get isListening;
+  bool get isTransmitting;
   @override
   @JsonKey(ignore: true)
   _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;

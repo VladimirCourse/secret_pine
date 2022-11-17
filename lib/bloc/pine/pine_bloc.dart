@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:secret_pine/repository/human/human_repository.dart';
 import 'package:secret_pine/repository/pine/pine_repository.dart';
 
 part 'pine_bloc.freezed.dart';
@@ -29,13 +28,13 @@ class PineBloc extends Bloc<PineEvent, PineState> {
 
   void _handleStartTransmit(_StartTransmit event, Emitter<PineState> emit) async {
     try {
-      emit(state.copyWith(isListening: true, isLoading: true));
+      emit(state.copyWith(isTransmitting: true, isLoading: true));
 
       await pineRepository.start();
 
       emit(state.copyWith(isLoading: false));
     } catch (ex) {
-      emit(state.copyWith(isListening: false, isLoading: false));
+      emit(state.copyWith(isTransmitting: false, isLoading: false));
     }
   }
 
@@ -45,15 +44,17 @@ class PineBloc extends Bloc<PineEvent, PineState> {
     try {
       await pineRepository.stop();
 
-      emit(state.copyWith(isListening: false));
+      emit(state.copyWith(isTransmitting: false));
     } catch (ex) {
-      emit(state.copyWith(isListening: true));
+      emit(state.copyWith(isTransmitting: true));
     }
   }
 
   @override
   Future<void> close() async {
     await _dataSubscription?.cancel();
+
+    await pineRepository.stop();
 
     super.close();
   }

@@ -16,54 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DataEventModel {
-  DeviceModel get device => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeviceModel device) startAudio,
-    required TResult Function(DeviceModel device, Uint8List data) audioData,
-    required TResult Function(DeviceModel device) stopAudio,
+    required TResult Function(List<String> messages) messages,
+    required TResult Function(String imagePath) image,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeviceModel device)? startAudio,
-    TResult? Function(DeviceModel device, Uint8List data)? audioData,
-    TResult? Function(DeviceModel device)? stopAudio,
+    TResult? Function(List<String> messages)? messages,
+    TResult? Function(String imagePath)? image,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeviceModel device)? startAudio,
-    TResult Function(DeviceModel device, Uint8List data)? audioData,
-    TResult Function(DeviceModel device)? stopAudio,
+    TResult Function(List<String> messages)? messages,
+    TResult Function(String imagePath)? image,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartAudio value) startAudio,
-    required TResult Function(_AudioData value) audioData,
-    required TResult Function(_StopAudio value) stopAudio,
+    required TResult Function(_Messages value) messages,
+    required TResult Function(_Image value) image,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAudio value)? startAudio,
-    TResult? Function(_AudioData value)? audioData,
-    TResult? Function(_StopAudio value)? stopAudio,
+    TResult? Function(_Messages value)? messages,
+    TResult? Function(_Image value)? image,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAudio value)? startAudio,
-    TResult Function(_AudioData value)? audioData,
-    TResult Function(_StopAudio value)? stopAudio,
+    TResult Function(_Messages value)? messages,
+    TResult Function(_Image value)? image,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DataEventModelCopyWith<DataEventModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -72,10 +61,6 @@ abstract class $DataEventModelCopyWith<$Res> {
   factory $DataEventModelCopyWith(
           DataEventModel value, $Res Function(DataEventModel) then) =
       _$DataEventModelCopyWithImpl<$Res, DataEventModel>;
-  @useResult
-  $Res call({DeviceModel device});
-
-  $DeviceModelCopyWith<$Res> get device;
 }
 
 /// @nodoc
@@ -87,133 +72,110 @@ class _$DataEventModelCopyWithImpl<$Res, $Val extends DataEventModel>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? device = null,
-  }) {
-    return _then(_value.copyWith(
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as DeviceModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DeviceModelCopyWith<$Res> get device {
-    return $DeviceModelCopyWith<$Res>(_value.device, (value) {
-      return _then(_value.copyWith(device: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartAudioCopyWith<$Res>
-    implements $DataEventModelCopyWith<$Res> {
-  factory _$$_StartAudioCopyWith(
-          _$_StartAudio value, $Res Function(_$_StartAudio) then) =
-      __$$_StartAudioCopyWithImpl<$Res>;
-  @override
+abstract class _$$_MessagesCopyWith<$Res> {
+  factory _$$_MessagesCopyWith(
+          _$_Messages value, $Res Function(_$_Messages) then) =
+      __$$_MessagesCopyWithImpl<$Res>;
   @useResult
-  $Res call({DeviceModel device});
-
-  @override
-  $DeviceModelCopyWith<$Res> get device;
+  $Res call({List<String> messages});
 }
 
 /// @nodoc
-class __$$_StartAudioCopyWithImpl<$Res>
-    extends _$DataEventModelCopyWithImpl<$Res, _$_StartAudio>
-    implements _$$_StartAudioCopyWith<$Res> {
-  __$$_StartAudioCopyWithImpl(
-      _$_StartAudio _value, $Res Function(_$_StartAudio) _then)
+class __$$_MessagesCopyWithImpl<$Res>
+    extends _$DataEventModelCopyWithImpl<$Res, _$_Messages>
+    implements _$$_MessagesCopyWith<$Res> {
+  __$$_MessagesCopyWithImpl(
+      _$_Messages _value, $Res Function(_$_Messages) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? device = null,
+    Object? messages = null,
   }) {
-    return _then(_$_StartAudio(
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as DeviceModel,
+    return _then(_$_Messages(
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_StartAudio with DiagnosticableTreeMixin implements _StartAudio {
-  const _$_StartAudio({required this.device});
+class _$_Messages with DiagnosticableTreeMixin implements _Messages {
+  const _$_Messages({required final List<String> messages})
+      : _messages = messages;
 
+  final List<String> _messages;
   @override
-  final DeviceModel device;
+  List<String> get messages {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DataEventModel.startAudio(device: $device)';
+    return 'DataEventModel.messages(messages: $messages)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'DataEventModel.startAudio'))
-      ..add(DiagnosticsProperty('device', device));
+      ..add(DiagnosticsProperty('type', 'DataEventModel.messages'))
+      ..add(DiagnosticsProperty('messages', messages));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartAudio &&
-            (identical(other.device, device) || other.device == device));
+            other is _$_Messages &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, device);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartAudioCopyWith<_$_StartAudio> get copyWith =>
-      __$$_StartAudioCopyWithImpl<_$_StartAudio>(this, _$identity);
+  _$$_MessagesCopyWith<_$_Messages> get copyWith =>
+      __$$_MessagesCopyWithImpl<_$_Messages>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeviceModel device) startAudio,
-    required TResult Function(DeviceModel device, Uint8List data) audioData,
-    required TResult Function(DeviceModel device) stopAudio,
+    required TResult Function(List<String> messages) messages,
+    required TResult Function(String imagePath) image,
   }) {
-    return startAudio(device);
+    return messages(this.messages);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeviceModel device)? startAudio,
-    TResult? Function(DeviceModel device, Uint8List data)? audioData,
-    TResult? Function(DeviceModel device)? stopAudio,
+    TResult? Function(List<String> messages)? messages,
+    TResult? Function(String imagePath)? image,
   }) {
-    return startAudio?.call(device);
+    return messages?.call(this.messages);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeviceModel device)? startAudio,
-    TResult Function(DeviceModel device, Uint8List data)? audioData,
-    TResult Function(DeviceModel device)? stopAudio,
+    TResult Function(List<String> messages)? messages,
+    TResult Function(String imagePath)? image,
     required TResult orElse(),
   }) {
-    if (startAudio != null) {
-      return startAudio(device);
+    if (messages != null) {
+      return messages(this.messages);
     }
     return orElse();
   }
@@ -221,164 +183,139 @@ class _$_StartAudio with DiagnosticableTreeMixin implements _StartAudio {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartAudio value) startAudio,
-    required TResult Function(_AudioData value) audioData,
-    required TResult Function(_StopAudio value) stopAudio,
+    required TResult Function(_Messages value) messages,
+    required TResult Function(_Image value) image,
   }) {
-    return startAudio(this);
+    return messages(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAudio value)? startAudio,
-    TResult? Function(_AudioData value)? audioData,
-    TResult? Function(_StopAudio value)? stopAudio,
+    TResult? Function(_Messages value)? messages,
+    TResult? Function(_Image value)? image,
   }) {
-    return startAudio?.call(this);
+    return messages?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAudio value)? startAudio,
-    TResult Function(_AudioData value)? audioData,
-    TResult Function(_StopAudio value)? stopAudio,
+    TResult Function(_Messages value)? messages,
+    TResult Function(_Image value)? image,
     required TResult orElse(),
   }) {
-    if (startAudio != null) {
-      return startAudio(this);
+    if (messages != null) {
+      return messages(this);
     }
     return orElse();
   }
 }
 
-abstract class _StartAudio implements DataEventModel {
-  const factory _StartAudio({required final DeviceModel device}) =
-      _$_StartAudio;
+abstract class _Messages implements DataEventModel {
+  const factory _Messages({required final List<String> messages}) = _$_Messages;
 
-  @override
-  DeviceModel get device;
-  @override
+  List<String> get messages;
   @JsonKey(ignore: true)
-  _$$_StartAudioCopyWith<_$_StartAudio> get copyWith =>
+  _$$_MessagesCopyWith<_$_Messages> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AudioDataCopyWith<$Res>
-    implements $DataEventModelCopyWith<$Res> {
-  factory _$$_AudioDataCopyWith(
-          _$_AudioData value, $Res Function(_$_AudioData) then) =
-      __$$_AudioDataCopyWithImpl<$Res>;
-  @override
+abstract class _$$_ImageCopyWith<$Res> {
+  factory _$$_ImageCopyWith(_$_Image value, $Res Function(_$_Image) then) =
+      __$$_ImageCopyWithImpl<$Res>;
   @useResult
-  $Res call({DeviceModel device, Uint8List data});
-
-  @override
-  $DeviceModelCopyWith<$Res> get device;
+  $Res call({String imagePath});
 }
 
 /// @nodoc
-class __$$_AudioDataCopyWithImpl<$Res>
-    extends _$DataEventModelCopyWithImpl<$Res, _$_AudioData>
-    implements _$$_AudioDataCopyWith<$Res> {
-  __$$_AudioDataCopyWithImpl(
-      _$_AudioData _value, $Res Function(_$_AudioData) _then)
+class __$$_ImageCopyWithImpl<$Res>
+    extends _$DataEventModelCopyWithImpl<$Res, _$_Image>
+    implements _$$_ImageCopyWith<$Res> {
+  __$$_ImageCopyWithImpl(_$_Image _value, $Res Function(_$_Image) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? device = null,
-    Object? data = null,
+    Object? imagePath = null,
   }) {
-    return _then(_$_AudioData(
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as DeviceModel,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+    return _then(_$_Image(
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AudioData with DiagnosticableTreeMixin implements _AudioData {
-  const _$_AudioData({required this.device, required this.data});
+class _$_Image with DiagnosticableTreeMixin implements _Image {
+  const _$_Image({required this.imagePath});
 
   @override
-  final DeviceModel device;
-  @override
-  final Uint8List data;
+  final String imagePath;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DataEventModel.audioData(device: $device, data: $data)';
+    return 'DataEventModel.image(imagePath: $imagePath)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'DataEventModel.audioData'))
-      ..add(DiagnosticsProperty('device', device))
-      ..add(DiagnosticsProperty('data', data));
+      ..add(DiagnosticsProperty('type', 'DataEventModel.image'))
+      ..add(DiagnosticsProperty('imagePath', imagePath));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AudioData &&
-            (identical(other.device, device) || other.device == device) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_Image &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, device, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, imagePath);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AudioDataCopyWith<_$_AudioData> get copyWith =>
-      __$$_AudioDataCopyWithImpl<_$_AudioData>(this, _$identity);
+  _$$_ImageCopyWith<_$_Image> get copyWith =>
+      __$$_ImageCopyWithImpl<_$_Image>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeviceModel device) startAudio,
-    required TResult Function(DeviceModel device, Uint8List data) audioData,
-    required TResult Function(DeviceModel device) stopAudio,
+    required TResult Function(List<String> messages) messages,
+    required TResult Function(String imagePath) image,
   }) {
-    return audioData(device, data);
+    return image(imagePath);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeviceModel device)? startAudio,
-    TResult? Function(DeviceModel device, Uint8List data)? audioData,
-    TResult? Function(DeviceModel device)? stopAudio,
+    TResult? Function(List<String> messages)? messages,
+    TResult? Function(String imagePath)? image,
   }) {
-    return audioData?.call(device, data);
+    return image?.call(imagePath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeviceModel device)? startAudio,
-    TResult Function(DeviceModel device, Uint8List data)? audioData,
-    TResult Function(DeviceModel device)? stopAudio,
+    TResult Function(List<String> messages)? messages,
+    TResult Function(String imagePath)? image,
     required TResult orElse(),
   }) {
-    if (audioData != null) {
-      return audioData(device, data);
+    if (image != null) {
+      return image(imagePath);
     }
     return orElse();
   }
@@ -386,202 +323,40 @@ class _$_AudioData with DiagnosticableTreeMixin implements _AudioData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartAudio value) startAudio,
-    required TResult Function(_AudioData value) audioData,
-    required TResult Function(_StopAudio value) stopAudio,
+    required TResult Function(_Messages value) messages,
+    required TResult Function(_Image value) image,
   }) {
-    return audioData(this);
+    return image(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAudio value)? startAudio,
-    TResult? Function(_AudioData value)? audioData,
-    TResult? Function(_StopAudio value)? stopAudio,
+    TResult? Function(_Messages value)? messages,
+    TResult? Function(_Image value)? image,
   }) {
-    return audioData?.call(this);
+    return image?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAudio value)? startAudio,
-    TResult Function(_AudioData value)? audioData,
-    TResult Function(_StopAudio value)? stopAudio,
+    TResult Function(_Messages value)? messages,
+    TResult Function(_Image value)? image,
     required TResult orElse(),
   }) {
-    if (audioData != null) {
-      return audioData(this);
+    if (image != null) {
+      return image(this);
     }
     return orElse();
   }
 }
 
-abstract class _AudioData implements DataEventModel {
-  const factory _AudioData(
-      {required final DeviceModel device,
-      required final Uint8List data}) = _$_AudioData;
+abstract class _Image implements DataEventModel {
+  const factory _Image({required final String imagePath}) = _$_Image;
 
-  @override
-  DeviceModel get device;
-  Uint8List get data;
-  @override
+  String get imagePath;
   @JsonKey(ignore: true)
-  _$$_AudioDataCopyWith<_$_AudioData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_StopAudioCopyWith<$Res>
-    implements $DataEventModelCopyWith<$Res> {
-  factory _$$_StopAudioCopyWith(
-          _$_StopAudio value, $Res Function(_$_StopAudio) then) =
-      __$$_StopAudioCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({DeviceModel device});
-
-  @override
-  $DeviceModelCopyWith<$Res> get device;
-}
-
-/// @nodoc
-class __$$_StopAudioCopyWithImpl<$Res>
-    extends _$DataEventModelCopyWithImpl<$Res, _$_StopAudio>
-    implements _$$_StopAudioCopyWith<$Res> {
-  __$$_StopAudioCopyWithImpl(
-      _$_StopAudio _value, $Res Function(_$_StopAudio) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? device = null,
-  }) {
-    return _then(_$_StopAudio(
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as DeviceModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_StopAudio with DiagnosticableTreeMixin implements _StopAudio {
-  const _$_StopAudio({required this.device});
-
-  @override
-  final DeviceModel device;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DataEventModel.stopAudio(device: $device)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'DataEventModel.stopAudio'))
-      ..add(DiagnosticsProperty('device', device));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StopAudio &&
-            (identical(other.device, device) || other.device == device));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, device);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StopAudioCopyWith<_$_StopAudio> get copyWith =>
-      __$$_StopAudioCopyWithImpl<_$_StopAudio>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DeviceModel device) startAudio,
-    required TResult Function(DeviceModel device, Uint8List data) audioData,
-    required TResult Function(DeviceModel device) stopAudio,
-  }) {
-    return stopAudio(device);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeviceModel device)? startAudio,
-    TResult? Function(DeviceModel device, Uint8List data)? audioData,
-    TResult? Function(DeviceModel device)? stopAudio,
-  }) {
-    return stopAudio?.call(device);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeviceModel device)? startAudio,
-    TResult Function(DeviceModel device, Uint8List data)? audioData,
-    TResult Function(DeviceModel device)? stopAudio,
-    required TResult orElse(),
-  }) {
-    if (stopAudio != null) {
-      return stopAudio(device);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StartAudio value) startAudio,
-    required TResult Function(_AudioData value) audioData,
-    required TResult Function(_StopAudio value) stopAudio,
-  }) {
-    return stopAudio(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAudio value)? startAudio,
-    TResult? Function(_AudioData value)? audioData,
-    TResult? Function(_StopAudio value)? stopAudio,
-  }) {
-    return stopAudio?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAudio value)? startAudio,
-    TResult Function(_AudioData value)? audioData,
-    TResult Function(_StopAudio value)? stopAudio,
-    required TResult orElse(),
-  }) {
-    if (stopAudio != null) {
-      return stopAudio(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StopAudio implements DataEventModel {
-  const factory _StopAudio({required final DeviceModel device}) = _$_StopAudio;
-
-  @override
-  DeviceModel get device;
-  @override
-  @JsonKey(ignore: true)
-  _$$_StopAudioCopyWith<_$_StopAudio> get copyWith =>
+  _$$_ImageCopyWith<_$_Image> get copyWith =>
       throw _privateConstructorUsedError;
 }

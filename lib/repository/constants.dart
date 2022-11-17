@@ -1,9 +1,9 @@
 class Constants {
   static const channel = 'vl.secret_pine.yandex';
 
-  static const message = 'message';
-  static const messages = 'messages';
-  static const image = 'image';
+  static const createMessage = 'create_message';
+  static const getMessages = 'get_messages';
+  static const getImage = 'get_image';
 
   static const delimiter = '@@@';
 

@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DeviceModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  bool get isTransmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DeviceModelCopyWith<DeviceModel> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $DeviceModelCopyWith<$Res> {
           DeviceModel value, $Res Function(DeviceModel) then) =
       _$DeviceModelCopyWithImpl<$Res, DeviceModel>;
   @useResult
-  $Res call({String id, String name, bool isTransmitting});
+  $Res call({String id, String name});
 }
 
 /// @nodoc
@@ -49,7 +48,6 @@ class _$DeviceModelCopyWithImpl<$Res, $Val extends DeviceModel>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? isTransmitting = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -60,10 +58,6 @@ class _$DeviceModelCopyWithImpl<$Res, $Val extends DeviceModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      isTransmitting: null == isTransmitting
-          ? _value.isTransmitting
-          : isTransmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +70,7 @@ abstract class _$$_DeviceModelCopyWith<$Res>
       __$$_DeviceModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, bool isTransmitting});
+  $Res call({String id, String name});
 }
 
 /// @nodoc
@@ -92,7 +86,6 @@ class __$$_DeviceModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? isTransmitting = null,
   }) {
     return _then(_$_DeviceModel(
       id: null == id
@@ -103,10 +96,6 @@ class __$$_DeviceModelCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      isTransmitting: null == isTransmitting
-          ? _value.isTransmitting
-          : isTransmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -114,19 +103,16 @@ class __$$_DeviceModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DeviceModel implements _DeviceModel {
-  const _$_DeviceModel(
-      {required this.id, required this.name, required this.isTransmitting});
+  const _$_DeviceModel({required this.id, required this.name});
 
   @override
   final String id;
   @override
   final String name;
-  @override
-  final bool isTransmitting;
 
   @override
   String toString() {
-    return 'DeviceModel(id: $id, name: $name, isTransmitting: $isTransmitting)';
+    return 'DeviceModel(id: $id, name: $name)';
   }
 
   @override
@@ -135,13 +121,11 @@ class _$_DeviceModel implements _DeviceModel {
         (other.runtimeType == runtimeType &&
             other is _$_DeviceModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.isTransmitting, isTransmitting) ||
-                other.isTransmitting == isTransmitting));
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, isTransmitting);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -152,16 +136,12 @@ class _$_DeviceModel implements _DeviceModel {
 
 abstract class _DeviceModel implements DeviceModel {
   const factory _DeviceModel(
-      {required final String id,
-      required final String name,
-      required final bool isTransmitting}) = _$_DeviceModel;
+      {required final String id, required final String name}) = _$_DeviceModel;
 
   @override
   String get id;
   @override
   String get name;
-  @override
-  bool get isTransmitting;
   @override
   @JsonKey(ignore: true)
   _$$_DeviceModelCopyWith<_$_DeviceModel> get copyWith =>

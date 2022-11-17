@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:secret_pine/model/data_event_model.dart';
@@ -91,27 +92,40 @@ class NearbyPineRepository extends PineRepository {
             if (payload.type == PayloadType.BYTES && bytes != null) {
               try {
                 final data = utf8.decode(Uint8List.fromList(bytes));
-                if (data.startsWith(Constants.message)) {
-                  final message = data.substring(Constants.message.length).replaceAll(Constants.delimiter, '');
 
-                  await _messageBox?.add('(${DateTime.now().toIso8601String()}) ${_devices[id]!.name}: $message');
-                } else if (data.startsWith(Constants.messages)) {
-                  final messages = _messageBox?.values.toList().reversed.take(10).join(Constants.delimiter);
-                  final encrypted = Uint8List.fromList(utf8.encode('${Constants.messages}$messages'));
+                if (data.startsWith(Constants.getMessages)) {
+                  await _sendMessages(id);
+                } else if (data.startsWith(Constants.getImage)) {
+                } else if (data.startsWith(Constants.createMessage)) {
+                  final message = data.substring(Constants.createMessage.length).replaceAll(Constants.delimiter, '');
+                  final date = DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now());
 
-                  await _nearby.sendBytesPayload(id, encrypted);
-                } else if (data.startsWith(Constants.image)) {}
-              } catch (ex) {}
+                  await _messageBox?.add('($date) ${_devices[id]!.name}: $message');
+
+                  for (final id in _endpoints.keys) {
+                    await _sendMessages(id);
+                  }
+                }
+              } catch (ex) {
+                print(ex);
+              }
             } else if (payload.type == PayloadType.FILE) {}
           }
         },
         onPayloadTransferUpdate: (id, payloadTransferUpdate) {},
       );
-
+      print('connected');
       _endpoints[id] = info;
-      _devices[id] = DeviceModel(id: id, name: info.endpointName, isTransmitting: false);
+      _devices[id] = DeviceModel(id: id, name: info.endpointName);
     } catch (ex) {
       _endpoints.remove(id);
     }
+  }
+
+  Future<void> _sendMessages(String id) async {
+    final messages = _messageBox?.values.toList().reversed.take(10).join(Constants.delimiter);
+    final encrypted = Uint8List.fromList(utf8.encode('${Constants.getMessages}$messages'));
+
+    await _nearby.sendBytesPayload(id, encrypted);
   }
 }

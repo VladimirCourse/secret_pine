@@ -6,6 +6,7 @@ class HumanState with _$HumanState {
     required String name,
     @Default(false) bool isLoading,
     @Default(false) bool isTransmitting,
-    // @Default([]) List<DeviceModel> devices,
+    @Default(false) isConnected,
+    @Default([]) List<String> messages,
   }) = _Data;
 }

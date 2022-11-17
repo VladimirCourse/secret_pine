@@ -29,55 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
-  audioplayers:
-    dependency: "direct main"
-    description:
-      name: audioplayers
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
-  audioplayers_android:
-    dependency: transitive
-    description:
-      name: audioplayers_android
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
-  audioplayers_darwin:
-    dependency: transitive
-    description:
-      name: audioplayers_darwin
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.3"
-  audioplayers_linux:
-    dependency: transitive
-    description:
-      name: audioplayers_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
-  audioplayers_platform_interface:
-    dependency: transitive
-    description:
-      name: audioplayers_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  audioplayers_web:
-    dependency: transitive
-    description:
-      name: audioplayers_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
-  audioplayers_windows:
-    dependency: transitive
-    description:
-      name: audioplayers_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   bloc:
     dependency: "direct main"
     description:
@@ -211,6 +162,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.4"
+  device_info:
+    dependency: transitive
+    description:
+      name: device_info
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3"
+  device_info_platform_interface:
+    dependency: transitive
+    description:
+      name: device_info_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -310,13 +275,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -331,6 +289,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -430,7 +395,7 @@ packages:
     source: hosted
     version: "1.8.2"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -485,6 +450,48 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  platform_device_id:
+    dependency: "direct main"
+    description:
+      name: platform_device_id
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+  platform_device_id_linux:
+    dependency: transitive
+    description:
+      name: platform_device_id_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  platform_device_id_macos:
+    dependency: transitive
+    description:
+      name: platform_device_id_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  platform_device_id_platform_interface:
+    dependency: transitive
+    description:
+      name: platform_device_id_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  platform_device_id_web:
+    dependency: transitive
+    description:
+      name: platform_device_id_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  platform_device_id_windows:
+    dependency: transitive
+    description:
+      name: platform_device_id_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -553,22 +560,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  sound_mode:
-    dependency: "direct main"
-    description:
-      name: sound_mode
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  sound_stream:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: android-fix
-      resolved-ref: f746be84ef5c490992471091e69007ad7c0b79c0
-      url: "https://github.com/AlexanderHorielko/flutter-sound-stream.git"
-    source: git
-    version: "0.3.0"
   source_gen:
     dependency: transitive
     description:
@@ -639,13 +630,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.7"
   vector_math:
     dependency: transitive
     description:

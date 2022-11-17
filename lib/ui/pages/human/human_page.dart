@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:secret_pine/bloc/human/human_bloc.dart';
-import 'package:secret_pine/bloc/pine/pine_bloc.dart';
 import 'package:secret_pine/ui/widgets/blink_switch.dart';
 
 class HumanPage extends StatefulWidget {
@@ -13,6 +12,8 @@ class HumanPage extends StatefulWidget {
 }
 
 class _HumanPageState extends State<HumanPage> {
+  final _controller = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -35,8 +36,15 @@ class _HumanPageState extends State<HumanPage> {
     context.read<HumanBloc>().add(HumanEvent.startTransmit(onError: _showError));
   }
 
+  void _refresh() {
+    context.read<HumanBloc>().add(const HumanEvent.sendDataRequest());
+  }
+
   void _sendMessage() {
-    context.read<HumanBloc>().add(HumanEvent.sendMessage(message: 'zdarova'));
+    final text = _controller.text.trim();
+    if (text.isNotEmpty) {
+      context.read<HumanBloc>().add(HumanEvent.sendMessage(message: text));
+    }
   }
 
   void _stopTransmit() {
@@ -84,13 +92,46 @@ class _HumanPageState extends State<HumanPage> {
             children: [
               const SizedBox(height: 20),
               BlocBuilder<HumanBloc, HumanState>(
+                builder: (_, state) => Expanded(
+                  child: Column(
+                    children: [
+                      if (state.messages.isNotEmpty)
+                        const Text(
+                          'Список сообщений',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      Expanded(
+                        child: ListView(
+                          children: state.messages
+                              .map(
+                                (message) => Text(
+                                  message,
+                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              BlocBuilder<HumanBloc, HumanState>(
                 builder: (_, state) => BlinkSwitch(
                   isLoading: state.isLoading,
                   isTransmitting: state.isTransmitting,
                   onChanged: (value) => value ? _startTransmit() : _stopTransmit(),
                 ),
               ),
-              TextButton(onPressed: _sendMessage, child: Text('send')),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _controller,
+                style: const TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 20),
+              TextButton(onPressed: _sendMessage, child: const Text('Отправить')),
+              const SizedBox(height: 20),
+              TextButton(onPressed: _refresh, child: const Text('Обновить')),
               const SizedBox(height: 50),
             ],
           ),

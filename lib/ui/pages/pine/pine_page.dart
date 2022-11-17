@@ -81,7 +81,7 @@ class _PinePageState extends State<PinePage> {
               BlocBuilder<PineBloc, PineState>(
                 builder: (_, state) => BlinkSwitch(
                   isLoading: state.isLoading,
-                  isTransmitting: state.isListening,
+                  isTransmitting: state.isTransmitting,
                   onChanged: (value) => value ? _startTransmit() : _stopTransmit(),
                 ),
               ),

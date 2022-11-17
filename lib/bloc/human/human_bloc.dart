@@ -11,33 +11,31 @@ part 'human_state.dart';
 class HumanBloc extends Bloc<HumanEvent, HumanState> {
   final HumanRepository humanRepository;
 
+  StreamSubscription? _deviceSubscription;
   StreamSubscription? _dataSubscription;
 
   HumanBloc({
     required this.humanRepository,
   }) : super(HumanState(name: humanRepository.userName)) {
-    _dataSubscription = humanRepository.dataStream.listen((event) async {
-      print(event);
+    _deviceSubscription = humanRepository.devicesStream.listen((event) async {
       event.mapOrNull(
+        connected: (event) {
+          add(const HumanEvent.sendDataRequest());
+        },
+      );
+    });
 
-          // startAudio: (_) async {
-          //   _isReceivingData = true;
-          //   add(const HumanEvent.refreshDevices());
-          //   await audioRepository.startPlay();
-          // },
-          // audioData: (data) async {
-          //   await audioRepository.writeAudioSample(data.data);
-          // },
-          // stopAudio: (_) async {
-          //   await audioRepository.stopPlay();
-          //   add(const HumanEvent.refreshDevices());
-          //   _isReceivingData = false;
-          // },
-          );
+    _dataSubscription = humanRepository.dataStream.listen((event) async {
+      event.mapOrNull(
+        messages: (event) {
+          add(HumanEvent.refreshMessages(messages: event.messages));
+        },
+      );
     });
 
     on<_StartTransmit>(_handleStartTransmit);
-    on<_RefreshData>(_handleRefreshData);
+    on<_RefreshMessages>(_handleRefresMessages);
+    on<_SendDataRequest>(_handleSendDataRequest);
     on<_SendMessage>(_handleSendMessage);
     on<_StopTransmit>(_handleStopTransmit);
   }
@@ -54,7 +52,17 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     }
   }
 
-  void _handleRefreshData(_RefreshData event, Emitter<HumanState> emit) async {}
+  void _handleRefresMessages(_RefreshMessages event, Emitter<HumanState> emit) async {
+    emit(state.copyWith(messages: event.messages, isConnected: true));
+  }
+
+  void _handleSendDataRequest(_SendDataRequest event, Emitter<HumanState> emit) async {
+    try {
+      await humanRepository.sendMessagesRequest();
+    } catch (ex) {
+      print(ex);
+    }
+  }
 
   void _handleSendMessage(_SendMessage event, Emitter<HumanState> emit) async {
     try {
@@ -77,6 +85,9 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
   @override
   Future<void> close() async {
     await _dataSubscription?.cancel();
+    await _deviceSubscription?.cancel();
+
+    await humanRepository.stop();
 
     super.close();
   }

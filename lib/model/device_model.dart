@@ -7,6 +7,5 @@ class DeviceModel with _$DeviceModel {
   const factory DeviceModel({
     required String id,
     required String name,
-    required bool isTransmitting,
   }) = _DeviceModel;
 }

@@ -18,50 +18,56 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HumanEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
   }) =>
@@ -84,120 +90,6 @@ class _$HumanEventCopyWithImpl<$Res, $Val extends HumanEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_RefreshDataCopyWith<$Res> {
-  factory _$$_RefreshDataCopyWith(
-          _$_RefreshData value, $Res Function(_$_RefreshData) then) =
-      __$$_RefreshDataCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res>
-    extends _$HumanEventCopyWithImpl<$Res, _$_RefreshData>
-    implements _$$_RefreshDataCopyWith<$Res> {
-  __$$_RefreshDataCopyWithImpl(
-      _$_RefreshData _value, $Res Function(_$_RefreshData) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_RefreshData implements _RefreshData {
-  const _$_RefreshData();
-
-  @override
-  String toString() {
-    return 'HumanEvent.refreshData()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RefreshData);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
-    required TResult Function(ErrorCallback onError) startTransmit,
-    required TResult Function(String message) sendMessage,
-    required TResult Function() stopTransmit,
-  }) {
-    return refreshData();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
-    TResult? Function(ErrorCallback onError)? startTransmit,
-    TResult? Function(String message)? sendMessage,
-    TResult? Function()? stopTransmit,
-  }) {
-    return refreshData?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
-    TResult Function(ErrorCallback onError)? startTransmit,
-    TResult Function(String message)? sendMessage,
-    TResult Function()? stopTransmit,
-    required TResult orElse(),
-  }) {
-    if (refreshData != null) {
-      return refreshData();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_StartTransmit value) startTransmit,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StopTransmit value) stopTransmit,
-  }) {
-    return refreshData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_StartTransmit value)? startTransmit,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StopTransmit value)? stopTransmit,
-  }) {
-    return refreshData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_StartTransmit value)? startTransmit,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StopTransmit value)? stopTransmit,
-    required TResult orElse(),
-  }) {
-    if (refreshData != null) {
-      return refreshData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RefreshData implements HumanEvent {
-  const factory _RefreshData() = _$_RefreshData;
 }
 
 /// @nodoc
@@ -264,9 +156,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
     return startTransmit(onError);
@@ -275,9 +168,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
     return startTransmit?.call(onError);
@@ -286,9 +180,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
   }) {
@@ -301,9 +196,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
     return startTransmit(this);
@@ -312,9 +208,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
     return startTransmit?.call(this);
@@ -323,9 +220,10 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
   }) {
@@ -343,6 +241,164 @@ abstract class _StartTransmit implements HumanEvent {
   ErrorCallback get onError;
   @JsonKey(ignore: true)
   _$$_StartTransmitCopyWith<_$_StartTransmit> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshMessagesCopyWith<$Res> {
+  factory _$$_RefreshMessagesCopyWith(
+          _$_RefreshMessages value, $Res Function(_$_RefreshMessages) then) =
+      __$$_RefreshMessagesCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> messages});
+}
+
+/// @nodoc
+class __$$_RefreshMessagesCopyWithImpl<$Res>
+    extends _$HumanEventCopyWithImpl<$Res, _$_RefreshMessages>
+    implements _$$_RefreshMessagesCopyWith<$Res> {
+  __$$_RefreshMessagesCopyWithImpl(
+      _$_RefreshMessages _value, $Res Function(_$_RefreshMessages) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messages = null,
+  }) {
+    return _then(_$_RefreshMessages(
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RefreshMessages implements _RefreshMessages {
+  const _$_RefreshMessages({required final List<String> messages})
+      : _messages = messages;
+
+  final List<String> _messages;
+  @override
+  List<String> get messages {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  String toString() {
+    return 'HumanEvent.refreshMessages(messages: $messages)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RefreshMessages &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshMessagesCopyWith<_$_RefreshMessages> get copyWith =>
+      __$$_RefreshMessagesCopyWithImpl<_$_RefreshMessages>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
+    required TResult Function() stopTransmit,
+  }) {
+    return refreshMessages(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
+    TResult? Function()? stopTransmit,
+  }) {
+    return refreshMessages?.call(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
+    TResult Function()? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshMessages != null) {
+      return refreshMessages(messages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
+    required TResult Function(_StopTransmit value) stopTransmit,
+  }) {
+    return refreshMessages(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
+    TResult? Function(_StopTransmit value)? stopTransmit,
+  }) {
+    return refreshMessages?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
+    TResult Function(_StopTransmit value)? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshMessages != null) {
+      return refreshMessages(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshMessages implements HumanEvent {
+  const factory _RefreshMessages({required final List<String> messages}) =
+      _$_RefreshMessages;
+
+  List<String> get messages;
+  @JsonKey(ignore: true)
+  _$$_RefreshMessagesCopyWith<_$_RefreshMessages> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -410,9 +466,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
     return sendMessage(message);
@@ -421,9 +478,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
     return sendMessage?.call(message);
@@ -432,9 +490,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
   }) {
@@ -447,9 +506,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
     return sendMessage(this);
@@ -458,9 +518,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
     return sendMessage?.call(this);
@@ -469,9 +530,10 @@ class _$_SendMessage implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
   }) {
@@ -489,6 +551,126 @@ abstract class _SendMessage implements HumanEvent {
   @JsonKey(ignore: true)
   _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SendDataRequestCopyWith<$Res> {
+  factory _$$_SendDataRequestCopyWith(
+          _$_SendDataRequest value, $Res Function(_$_SendDataRequest) then) =
+      __$$_SendDataRequestCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SendDataRequestCopyWithImpl<$Res>
+    extends _$HumanEventCopyWithImpl<$Res, _$_SendDataRequest>
+    implements _$$_SendDataRequestCopyWith<$Res> {
+  __$$_SendDataRequestCopyWithImpl(
+      _$_SendDataRequest _value, $Res Function(_$_SendDataRequest) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SendDataRequest implements _SendDataRequest {
+  const _$_SendDataRequest();
+
+  @override
+  String toString() {
+    return 'HumanEvent.sendDataRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SendDataRequest);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
+    required TResult Function() stopTransmit,
+  }) {
+    return sendDataRequest();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
+    TResult? Function()? stopTransmit,
+  }) {
+    return sendDataRequest?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
+    TResult Function()? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (sendDataRequest != null) {
+      return sendDataRequest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
+    required TResult Function(_StopTransmit value) stopTransmit,
+  }) {
+    return sendDataRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
+    TResult? Function(_StopTransmit value)? stopTransmit,
+  }) {
+    return sendDataRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
+    TResult Function(_StopTransmit value)? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (sendDataRequest != null) {
+      return sendDataRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendDataRequest implements HumanEvent {
+  const factory _SendDataRequest() = _$_SendDataRequest;
 }
 
 /// @nodoc
@@ -529,9 +711,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String message) sendMessage,
+    required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
     return stopTransmit();
@@ -540,9 +723,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String message)? sendMessage,
+    TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
     return stopTransmit?.call();
@@ -551,9 +735,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String message)? sendMessage,
+    TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
   }) {
@@ -566,9 +751,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
     return stopTransmit(this);
@@ -577,9 +763,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
     return stopTransmit?.call(this);
@@ -588,9 +775,10 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
   }) {
@@ -610,6 +798,8 @@ mixin _$HumanState {
   String get name => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isTransmitting => throw _privateConstructorUsedError;
+  dynamic get isConnected => throw _privateConstructorUsedError;
+  List<String> get messages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HumanStateCopyWith<HumanState> get copyWith =>
@@ -622,7 +812,12 @@ abstract class $HumanStateCopyWith<$Res> {
           HumanState value, $Res Function(HumanState) then) =
       _$HumanStateCopyWithImpl<$Res, HumanState>;
   @useResult
-  $Res call({String name, bool isLoading, bool isTransmitting});
+  $Res call(
+      {String name,
+      bool isLoading,
+      bool isTransmitting,
+      dynamic isConnected,
+      List<String> messages});
 }
 
 /// @nodoc
@@ -641,6 +836,8 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
     Object? name = null,
     Object? isLoading = null,
     Object? isTransmitting = null,
+    Object? isConnected = null,
+    Object? messages = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -655,6 +852,14 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
           ? _value.isTransmitting
           : isTransmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      messages: null == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -665,7 +870,12 @@ abstract class _$$_DataCopyWith<$Res> implements $HumanStateCopyWith<$Res> {
       __$$_DataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, bool isLoading, bool isTransmitting});
+  $Res call(
+      {String name,
+      bool isLoading,
+      bool isTransmitting,
+      dynamic isConnected,
+      List<String> messages});
 }
 
 /// @nodoc
@@ -681,6 +891,8 @@ class __$$_DataCopyWithImpl<$Res>
     Object? name = null,
     Object? isLoading = null,
     Object? isTransmitting = null,
+    Object? isConnected = null,
+    Object? messages = null,
   }) {
     return _then(_$_Data(
       name: null == name
@@ -695,6 +907,11 @@ class __$$_DataCopyWithImpl<$Res>
           ? _value.isTransmitting
           : isTransmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      isConnected: null == isConnected ? _value.isConnected : isConnected,
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -705,7 +922,10 @@ class _$_Data implements _Data {
   const _$_Data(
       {required this.name,
       this.isLoading = false,
-      this.isTransmitting = false});
+      this.isTransmitting = false,
+      this.isConnected = false,
+      final List<String> messages = const []})
+      : _messages = messages;
 
   @override
   final String name;
@@ -715,10 +935,20 @@ class _$_Data implements _Data {
   @override
   @JsonKey()
   final bool isTransmitting;
+  @override
+  @JsonKey()
+  final dynamic isConnected;
+  final List<String> _messages;
+  @override
+  @JsonKey()
+  List<String> get messages {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
 
   @override
   String toString() {
-    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting)';
+    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting, isConnected: $isConnected, messages: $messages)';
   }
 
   @override
@@ -730,11 +960,20 @@ class _$_Data implements _Data {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isTransmitting, isTransmitting) ||
-                other.isTransmitting == isTransmitting));
+                other.isTransmitting == isTransmitting) &&
+            const DeepCollectionEquality()
+                .equals(other.isConnected, isConnected) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, isLoading, isTransmitting);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      isLoading,
+      isTransmitting,
+      const DeepCollectionEquality().hash(isConnected),
+      const DeepCollectionEquality().hash(_messages));
 
   @JsonKey(ignore: true)
   @override
@@ -747,7 +986,9 @@ abstract class _Data implements HumanState {
   const factory _Data(
       {required final String name,
       final bool isLoading,
-      final bool isTransmitting}) = _$_Data;
+      final bool isTransmitting,
+      final dynamic isConnected,
+      final List<String> messages}) = _$_Data;
 
   @override
   String get name;
@@ -755,6 +996,10 @@ abstract class _Data implements HumanState {
   bool get isLoading;
   @override
   bool get isTransmitting;
+  @override
+  dynamic get isConnected;
+  @override
+  List<String> get messages;
   @override
   @JsonKey(ignore: true)
   _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
