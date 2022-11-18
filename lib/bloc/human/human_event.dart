@@ -8,7 +8,11 @@ class HumanEvent with _$HumanEvent {
 
   const factory HumanEvent.refreshMessages({required List<String> messages}) = _RefreshMessages;
 
+  const factory HumanEvent.refreshImage({required String imagePath}) = _RefreshImage;
+
   const factory HumanEvent.sendMessage({required String message}) = _SendMessage;
+
+  const factory HumanEvent.sendImage({required String imagePath}) = _SendImage;
 
   const factory HumanEvent.sendDataRequest() = _SendDataRequest;
 

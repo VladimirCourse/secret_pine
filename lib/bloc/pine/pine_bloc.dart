@@ -13,9 +13,7 @@ class PineBloc extends Bloc<PineEvent, PineState> {
 
   StreamSubscription? _dataSubscription;
 
-  PineBloc({
-    required this.pineRepository,
-  }) : super(PineState(name: pineRepository.userName)) {
+  PineBloc({required this.pineRepository}) : super(PineState(name: pineRepository.userName)) {
     // _dataSubscription = transmitRepository.dataStream.listen((event) async {
     //   print(event);
     //   event.mapOrNull();

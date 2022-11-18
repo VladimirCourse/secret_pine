@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:nearby_connections/nearby_connections.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:secret_pine/model/data_event_model.dart';
 import 'package:secret_pine/model/device_event_model.dart';
@@ -22,6 +24,9 @@ class NearbyPineRepository extends PineRepository {
   final _dataSubject = BehaviorSubject<DataEventModel>();
 
   Box<String>? _messageBox;
+  Box<String>? _imageBox;
+
+  String? _tempFileUri;
 
   // @override
   // List<DeviceModel> get devices => _devices.values.toList();
@@ -38,6 +43,7 @@ class NearbyPineRepository extends PineRepository {
   @override
   Future<void> start() async {
     _messageBox = await Hive.openBox('messages');
+    _imageBox = await Hive.openBox('image');
 
     await _advertiseNearby();
   }
@@ -54,6 +60,7 @@ class NearbyPineRepository extends PineRepository {
     await stop();
 
     await _messageBox?.close();
+    await _imageBox?.close();
 
     await _devicesSubject.close();
     await _dataSubject.close();
@@ -96,12 +103,9 @@ class NearbyPineRepository extends PineRepository {
                 if (data.startsWith(Constants.getMessages)) {
                   await _sendMessages(id);
                 } else if (data.startsWith(Constants.getImage)) {
+                  await _sendImage(id);
                 } else if (data.startsWith(Constants.createMessage)) {
-                  final message = data.substring(Constants.createMessage.length).replaceAll(Constants.delimiter, '');
-                  final date = DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now());
-
-                  await _messageBox?.add('($date) ${_devices[id]!.name}: $message');
-
+                  await _saveMessage(id, data);
                   for (final id in _endpoints.keys) {
                     await _sendMessages(id);
                   }
@@ -109,12 +113,36 @@ class NearbyPineRepository extends PineRepository {
               } catch (ex) {
                 print(ex);
               }
-            } else if (payload.type == PayloadType.FILE) {}
+            } else if (payload.type == PayloadType.FILE && payload.uri != null) {
+              _tempFileUri = payload.uri;
+            }
           }
         },
-        onPayloadTransferUpdate: (id, payloadTransferUpdate) {},
+        onPayloadTransferUpdate: (id, payloadTransferUpdate) async {
+          if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
+            try {
+              if (_tempFileUri != null) {
+                final lastImagePath = await _lastImageUri;
+
+                try {
+                  final file = File(lastImagePath);
+                  await file.delete();
+                } catch (ex) {
+                  print(ex);
+                }
+
+                await _nearby.copyFileAndDeleteOriginal(_tempFileUri!, await _lastImageUri);
+
+                _tempFileUri = null;
+              }
+            } catch (ex) {
+              print(ex);
+              //
+            }
+          }
+        },
       );
-      print('connected');
+
       _endpoints[id] = info;
       _devices[id] = DeviceModel(id: id, name: info.endpointName);
     } catch (ex) {
@@ -122,10 +150,30 @@ class NearbyPineRepository extends PineRepository {
     }
   }
 
+  Future<String> get _lastImageUri async => '${(await getExternalStorageDirectory())!.absolute.path}/last_pine_img';
+
+  Future<void> _saveMessage(String id, String data) async {
+    final message = data.substring(Constants.createMessage.length).replaceAll(Constants.delimiter, '');
+    final date = DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now());
+
+    await _messageBox?.add('($date) ${_devices[id]!.name}: $message');
+  }
+
   Future<void> _sendMessages(String id) async {
     final messages = _messageBox?.values.toList().reversed.take(10).join(Constants.delimiter);
     final encrypted = Uint8List.fromList(utf8.encode('${Constants.getMessages}$messages'));
 
     await _nearby.sendBytesPayload(id, encrypted);
+  }
+
+  Future<void> _sendImage(String id) async {
+    try {
+      // final lastImage = _imageBox?.get('last_image');
+      // final dir = await getExternalStorageDirectory();
+
+      await _nearby.sendFilePayload(id, await _lastImageUri);
+    } catch (ex) {
+      print(ex);
+    }
   }
 }

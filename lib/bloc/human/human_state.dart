@@ -8,5 +8,6 @@ class HumanState with _$HumanState {
     @Default(false) bool isTransmitting,
     @Default(false) isConnected,
     @Default([]) List<String> messages,
+    File? image,
   }) = _Data;
 }

@@ -20,7 +20,9 @@ mixin _$HumanEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) =>
@@ -29,7 +31,9 @@ mixin _$HumanEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) =>
@@ -38,7 +42,9 @@ mixin _$HumanEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -48,7 +54,9 @@ mixin _$HumanEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) =>
@@ -57,7 +65,9 @@ mixin _$HumanEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) =>
@@ -66,7 +76,9 @@ mixin _$HumanEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -158,7 +170,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
@@ -170,7 +184,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
@@ -182,7 +198,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -198,7 +216,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -210,7 +230,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -222,7 +244,9 @@ class _$_StartTransmit implements _StartTransmit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -316,7 +340,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
@@ -328,7 +354,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
@@ -340,7 +368,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -356,7 +386,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -368,7 +400,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -380,7 +414,9 @@ class _$_RefreshMessages implements _RefreshMessages {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -399,6 +435,171 @@ abstract class _RefreshMessages implements HumanEvent {
   List<String> get messages;
   @JsonKey(ignore: true)
   _$$_RefreshMessagesCopyWith<_$_RefreshMessages> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshImageCopyWith<$Res> {
+  factory _$$_RefreshImageCopyWith(
+          _$_RefreshImage value, $Res Function(_$_RefreshImage) then) =
+      __$$_RefreshImageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String imagePath});
+}
+
+/// @nodoc
+class __$$_RefreshImageCopyWithImpl<$Res>
+    extends _$HumanEventCopyWithImpl<$Res, _$_RefreshImage>
+    implements _$$_RefreshImageCopyWith<$Res> {
+  __$$_RefreshImageCopyWithImpl(
+      _$_RefreshImage _value, $Res Function(_$_RefreshImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imagePath = null,
+  }) {
+    return _then(_$_RefreshImage(
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RefreshImage implements _RefreshImage {
+  const _$_RefreshImage({required this.imagePath});
+
+  @override
+  final String imagePath;
+
+  @override
+  String toString() {
+    return 'HumanEvent.refreshImage(imagePath: $imagePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RefreshImage &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, imagePath);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshImageCopyWith<_$_RefreshImage> get copyWith =>
+      __$$_RefreshImageCopyWithImpl<_$_RefreshImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
+    required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
+    required TResult Function() sendDataRequest,
+    required TResult Function() stopTransmit,
+  }) {
+    return refreshImage(imagePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
+    TResult? Function()? sendDataRequest,
+    TResult? Function()? stopTransmit,
+  }) {
+    return refreshImage?.call(imagePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
+    TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
+    TResult Function()? sendDataRequest,
+    TResult Function()? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshImage != null) {
+      return refreshImage(imagePath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
+    required TResult Function(_StopTransmit value) stopTransmit,
+  }) {
+    return refreshImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
+    TResult? Function(_StopTransmit value)? stopTransmit,
+  }) {
+    return refreshImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
+    TResult Function(_StopTransmit value)? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshImage != null) {
+      return refreshImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshImage implements HumanEvent {
+  const factory _RefreshImage({required final String imagePath}) =
+      _$_RefreshImage;
+
+  String get imagePath;
+  @JsonKey(ignore: true)
+  _$$_RefreshImageCopyWith<_$_RefreshImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -468,7 +669,9 @@ class _$_SendMessage implements _SendMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
@@ -480,7 +683,9 @@ class _$_SendMessage implements _SendMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
@@ -492,7 +697,9 @@ class _$_SendMessage implements _SendMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -508,7 +715,9 @@ class _$_SendMessage implements _SendMessage {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -520,7 +729,9 @@ class _$_SendMessage implements _SendMessage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -532,7 +743,9 @@ class _$_SendMessage implements _SendMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -550,6 +763,170 @@ abstract class _SendMessage implements HumanEvent {
   String get message;
   @JsonKey(ignore: true)
   _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SendImageCopyWith<$Res> {
+  factory _$$_SendImageCopyWith(
+          _$_SendImage value, $Res Function(_$_SendImage) then) =
+      __$$_SendImageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String imagePath});
+}
+
+/// @nodoc
+class __$$_SendImageCopyWithImpl<$Res>
+    extends _$HumanEventCopyWithImpl<$Res, _$_SendImage>
+    implements _$$_SendImageCopyWith<$Res> {
+  __$$_SendImageCopyWithImpl(
+      _$_SendImage _value, $Res Function(_$_SendImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imagePath = null,
+  }) {
+    return _then(_$_SendImage(
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendImage implements _SendImage {
+  const _$_SendImage({required this.imagePath});
+
+  @override
+  final String imagePath;
+
+  @override
+  String toString() {
+    return 'HumanEvent.sendImage(imagePath: $imagePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SendImage &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, imagePath);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SendImageCopyWith<_$_SendImage> get copyWith =>
+      __$$_SendImageCopyWithImpl<_$_SendImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
+    required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
+    required TResult Function() sendDataRequest,
+    required TResult Function() stopTransmit,
+  }) {
+    return sendImage(imagePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
+    TResult? Function()? sendDataRequest,
+    TResult? Function()? stopTransmit,
+  }) {
+    return sendImage?.call(imagePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
+    TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
+    TResult Function()? sendDataRequest,
+    TResult Function()? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (sendImage != null) {
+      return sendImage(imagePath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
+    required TResult Function(_StopTransmit value) stopTransmit,
+  }) {
+    return sendImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
+    TResult? Function(_StopTransmit value)? stopTransmit,
+  }) {
+    return sendImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
+    TResult Function(_StopTransmit value)? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (sendImage != null) {
+      return sendImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendImage implements HumanEvent {
+  const factory _SendImage({required final String imagePath}) = _$_SendImage;
+
+  String get imagePath;
+  @JsonKey(ignore: true)
+  _$$_SendImageCopyWith<_$_SendImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -593,7 +970,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
@@ -605,7 +984,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
@@ -617,7 +998,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -633,7 +1016,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -645,7 +1030,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -657,7 +1044,9 @@ class _$_SendDataRequest implements _SendDataRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -713,7 +1102,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult when<TResult extends Object?>({
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
     required TResult Function(String message) sendMessage,
+    required TResult Function(String imagePath) sendImage,
     required TResult Function() sendDataRequest,
     required TResult Function() stopTransmit,
   }) {
@@ -725,7 +1116,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
     TResult? Function(String message)? sendMessage,
+    TResult? Function(String imagePath)? sendImage,
     TResult? Function()? sendDataRequest,
     TResult? Function()? stopTransmit,
   }) {
@@ -737,7 +1130,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
     TResult Function(String message)? sendMessage,
+    TResult Function(String imagePath)? sendImage,
     TResult Function()? sendDataRequest,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -753,7 +1148,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -765,7 +1162,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -777,7 +1176,9 @@ class _$_StopTransmit implements _StopTransmit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -800,6 +1201,8 @@ mixin _$HumanState {
   bool get isTransmitting => throw _privateConstructorUsedError;
   dynamic get isConnected => throw _privateConstructorUsedError;
   List<String> get messages => throw _privateConstructorUsedError;
+  File? get image => throw _privateConstructorUsedError;
+  DateTime? get imageUpdateDate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HumanStateCopyWith<HumanState> get copyWith =>
@@ -817,7 +1220,9 @@ abstract class $HumanStateCopyWith<$Res> {
       bool isLoading,
       bool isTransmitting,
       dynamic isConnected,
-      List<String> messages});
+      List<String> messages,
+      File? image,
+      DateTime? imageUpdateDate});
 }
 
 /// @nodoc
@@ -838,6 +1243,8 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
     Object? isTransmitting = null,
     Object? isConnected = null,
     Object? messages = null,
+    Object? image = freezed,
+    Object? imageUpdateDate = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -860,6 +1267,14 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File?,
+      imageUpdateDate: freezed == imageUpdateDate
+          ? _value.imageUpdateDate
+          : imageUpdateDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -875,7 +1290,9 @@ abstract class _$$_DataCopyWith<$Res> implements $HumanStateCopyWith<$Res> {
       bool isLoading,
       bool isTransmitting,
       dynamic isConnected,
-      List<String> messages});
+      List<String> messages,
+      File? image,
+      DateTime? imageUpdateDate});
 }
 
 /// @nodoc
@@ -893,6 +1310,8 @@ class __$$_DataCopyWithImpl<$Res>
     Object? isTransmitting = null,
     Object? isConnected = null,
     Object? messages = null,
+    Object? image = freezed,
+    Object? imageUpdateDate = freezed,
   }) {
     return _then(_$_Data(
       name: null == name
@@ -912,6 +1331,14 @@ class __$$_DataCopyWithImpl<$Res>
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File?,
+      imageUpdateDate: freezed == imageUpdateDate
+          ? _value.imageUpdateDate
+          : imageUpdateDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -924,7 +1351,9 @@ class _$_Data implements _Data {
       this.isLoading = false,
       this.isTransmitting = false,
       this.isConnected = false,
-      final List<String> messages = const []})
+      final List<String> messages = const [],
+      this.image,
+      this.imageUpdateDate})
       : _messages = messages;
 
   @override
@@ -947,8 +1376,13 @@ class _$_Data implements _Data {
   }
 
   @override
+  final File? image;
+  @override
+  final DateTime? imageUpdateDate;
+
+  @override
   String toString() {
-    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting, isConnected: $isConnected, messages: $messages)';
+    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting, isConnected: $isConnected, messages: $messages, image: $image, imageUpdateDate: $imageUpdateDate)';
   }
 
   @override
@@ -963,7 +1397,10 @@ class _$_Data implements _Data {
                 other.isTransmitting == isTransmitting) &&
             const DeepCollectionEquality()
                 .equals(other.isConnected, isConnected) &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.imageUpdateDate, imageUpdateDate) ||
+                other.imageUpdateDate == imageUpdateDate));
   }
 
   @override
@@ -973,7 +1410,9 @@ class _$_Data implements _Data {
       isLoading,
       isTransmitting,
       const DeepCollectionEquality().hash(isConnected),
-      const DeepCollectionEquality().hash(_messages));
+      const DeepCollectionEquality().hash(_messages),
+      image,
+      imageUpdateDate);
 
   @JsonKey(ignore: true)
   @override
@@ -988,7 +1427,9 @@ abstract class _Data implements HumanState {
       final bool isLoading,
       final bool isTransmitting,
       final dynamic isConnected,
-      final List<String> messages}) = _$_Data;
+      final List<String> messages,
+      final File? image,
+      final DateTime? imageUpdateDate}) = _$_Data;
 
   @override
   String get name;
@@ -1000,6 +1441,10 @@ abstract class _Data implements HumanState {
   dynamic get isConnected;
   @override
   List<String> get messages;
+  @override
+  File? get image;
+  @override
+  DateTime? get imageUpdateDate;
   @override
   @JsonKey(ignore: true)
   _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;

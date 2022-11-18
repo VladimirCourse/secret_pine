@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:secret_pine/bloc/human/human_bloc.dart';
 import 'package:secret_pine/ui/widgets/blink_switch.dart';
@@ -49,6 +52,24 @@ class _HumanPageState extends State<HumanPage> {
 
   void _stopTransmit() {
     context.read<HumanBloc>().add(const HumanEvent.stopTransmit());
+  }
+
+  Future<void> _sendImage() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+        maxWidth: 256,
+        maxHeight: 256,
+      );
+
+      if (image != null) {
+        context.read<HumanBloc>().add(HumanEvent.sendImage(imagePath: image.path));
+      }
+    } catch (ex) {
+      print(ex);
+      _showError(error: 'Ошибка отправки картинки');
+    }
   }
 
   void _showError({String? error}) {
@@ -117,6 +138,14 @@ class _HumanPageState extends State<HumanPage> {
                 ),
               ),
               BlocBuilder<HumanBloc, HumanState>(
+                builder: (_, state) => state.image != null
+                    ? Image.file(
+                        state.image!,
+                        key: ValueKey(state.image!.hashCode),
+                      )
+                    : const SizedBox(),
+              ),
+              BlocBuilder<HumanBloc, HumanState>(
                 builder: (_, state) => BlinkSwitch(
                   isLoading: state.isLoading,
                   isTransmitting: state.isTransmitting,
@@ -132,6 +161,8 @@ class _HumanPageState extends State<HumanPage> {
               TextButton(onPressed: _sendMessage, child: const Text('Отправить')),
               const SizedBox(height: 20),
               TextButton(onPressed: _refresh, child: const Text('Обновить')),
+              const SizedBox(height: 20),
+              TextButton(onPressed: _sendImage, child: const Text('Отправить картинку')),
               const SizedBox(height: 50),
             ],
           ),

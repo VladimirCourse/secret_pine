@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:nearby_connections/nearby_connections.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:secret_pine/model/data_event_model.dart';
 import 'package:secret_pine/model/device_event_model.dart';
@@ -13,11 +15,12 @@ import 'package:secret_pine/repository/human/human_repository.dart';
 class NearbyHumanRepository extends HumanRepository {
   final _nearby = Nearby();
 
-  String? _pineId;
-  ConnectionInfo? _pineConnection;
-
   final _devicesSubject = BehaviorSubject<DeviceEventModel>();
   final _dataSubject = BehaviorSubject<DataEventModel>();
+
+  String? _pineId;
+  ConnectionInfo? _pineConnection;
+  String? _tempFileUri;
 
   NearbyHumanRepository({required this.userName});
 
@@ -86,58 +89,62 @@ class NearbyHumanRepository extends HumanRepository {
     await _dataSubject.close();
   }
 
-  Future<void> _discoverNearby() async {
+  Future<String?> get _lastImageUri async {
     try {
-      await _nearby.startDiscovery(
-        userName,
-        Strategy.P2P_POINT_TO_POINT,
-        serviceId: Constants.channel,
-        onEndpointFound: (id, name, serviceId) {
-          if (name == Constants.pine && _pineConnection == null) {
-            _nearby.requestConnection(
-              userName,
-              id,
-              onConnectionInitiated: _acceptConnection,
-              onConnectionResult: (id, status) {
-                if (status == Status.CONNECTED && _pineConnection != null) {
-                  _devicesSubject.add(
-                    DeviceEventModel.connected(
-                      device: DeviceModel(id: id, name: _pineConnection!.endpointName),
-                    ),
-                  );
-                }
-              },
-              onDisconnected: (id) {
-                if (_pineConnection != null) {
-                  _devicesSubject.add(
-                    DeviceEventModel.disconnected(
-                      device: DeviceModel(id: id, name: _pineConnection!.endpointName),
-                    ),
-                  );
-                }
-
-                _pineConnection = null;
-                _pineId = null;
-              },
-            );
-          }
-        },
-        onEndpointLost: (id) {
-          if (id != null && _pineConnection != null) {
-            _devicesSubject.add(
-              DeviceEventModel.disconnected(
-                device: DeviceModel(id: id, name: _pineConnection!.endpointName),
-              ),
-            );
-          }
-
-          _pineConnection = null;
-          _pineId = null;
-        },
-      );
+      return '${(await getExternalStorageDirectory())!.absolute.path}/last_hum_img';
     } catch (ex) {
-      print(ex);
+      return null;
     }
+  }
+
+  Future<void> _discoverNearby() async {
+    await _nearby.startDiscovery(
+      userName,
+      Strategy.P2P_POINT_TO_POINT,
+      serviceId: Constants.channel,
+      onEndpointFound: (id, name, serviceId) {
+        if (name == Constants.pine && _pineConnection == null) {
+          _nearby.requestConnection(
+            userName,
+            id,
+            onConnectionInitiated: _acceptConnection,
+            onConnectionResult: (id, status) {
+              if (status == Status.CONNECTED && _pineConnection != null) {
+                _devicesSubject.add(
+                  DeviceEventModel.connected(
+                    device: DeviceModel(id: id, name: _pineConnection!.endpointName),
+                  ),
+                );
+              }
+            },
+            onDisconnected: (id) {
+              if (_pineConnection != null) {
+                _devicesSubject.add(
+                  DeviceEventModel.disconnected(
+                    device: DeviceModel(id: id, name: _pineConnection!.endpointName),
+                  ),
+                );
+              }
+
+              _pineConnection = null;
+              _pineId = null;
+            },
+          );
+        }
+      },
+      onEndpointLost: (id) {
+        if (id != null && _pineConnection != null) {
+          _devicesSubject.add(
+            DeviceEventModel.disconnected(
+              device: DeviceModel(id: id, name: _pineConnection!.endpointName),
+            ),
+          );
+        }
+
+        _pineConnection = null;
+        _pineId = null;
+      },
+    );
   }
 
   Future<void> _acceptConnection(String id, ConnectionInfo info) async {
@@ -156,9 +163,34 @@ class NearbyHumanRepository extends HumanRepository {
                   _dataSubject.add(DataEventModel.messages(messages: messages));
                 }
               } catch (ex) {}
-            } else if (payload.type == PayloadType.FILE) {}
+            } else if (payload.type == PayloadType.FILE && payload.uri != null) {
+              _tempFileUri = payload.uri!;
+            }
           },
-          onPayloadTransferUpdate: (id, payloadTransferUpdate) {},
+          onPayloadTransferUpdate: (id, payloadTransferUpdate) async {
+            if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
+              try {
+                final lastImagePath = await _lastImageUri;
+
+                if (_tempFileUri != null && lastImagePath != null) {
+                  try {
+                    final file = File(lastImagePath);
+                    await file.delete();
+                  } catch (ex) {
+                    print(ex);
+                  }
+
+                  await _nearby.copyFileAndDeleteOriginal(_tempFileUri!, lastImagePath);
+
+                  _dataSubject.add(DataEventModel.image(imagePath: lastImagePath));
+
+                  _tempFileUri = null;
+                }
+              } catch (ex) {
+                print(ex);
+              }
+            }
+          },
         );
 
         _pineConnection = info;

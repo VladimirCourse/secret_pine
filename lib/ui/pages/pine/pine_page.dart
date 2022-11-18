@@ -27,7 +27,7 @@ class _PinePageState extends State<PinePage> {
     final nearby = Nearby();
 
     nearby.askBluetoothPermission();
-    nearby.askLocationPermission();
+    nearby.askLocationAndExternalStoragePermission();
   }
 
   void _startTransmit() {
