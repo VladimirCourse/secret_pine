@@ -18,21 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PineEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function() stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function()? stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -40,21 +37,18 @@ mixin _$PineEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -77,114 +71,6 @@ class _$PineEventCopyWithImpl<$Res, $Val extends PineEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_RefreshDataCopyWith<$Res> {
-  factory _$$_RefreshDataCopyWith(
-          _$_RefreshData value, $Res Function(_$_RefreshData) then) =
-      __$$_RefreshDataCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res>
-    extends _$PineEventCopyWithImpl<$Res, _$_RefreshData>
-    implements _$$_RefreshDataCopyWith<$Res> {
-  __$$_RefreshDataCopyWithImpl(
-      _$_RefreshData _value, $Res Function(_$_RefreshData) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_RefreshData implements _RefreshData {
-  const _$_RefreshData();
-
-  @override
-  String toString() {
-    return 'PineEvent.refreshData()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RefreshData);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
-    required TResult Function(ErrorCallback onError) startTransmit,
-    required TResult Function() stopTransmit,
-  }) {
-    return refreshData();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
-    TResult? Function(ErrorCallback onError)? startTransmit,
-    TResult? Function()? stopTransmit,
-  }) {
-    return refreshData?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
-    TResult Function(ErrorCallback onError)? startTransmit,
-    TResult Function()? stopTransmit,
-    required TResult orElse(),
-  }) {
-    if (refreshData != null) {
-      return refreshData();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_StartTransmit value) startTransmit,
-    required TResult Function(_StopTransmit value) stopTransmit,
-  }) {
-    return refreshData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_StartTransmit value)? startTransmit,
-    TResult? Function(_StopTransmit value)? stopTransmit,
-  }) {
-    return refreshData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_StartTransmit value)? startTransmit,
-    TResult Function(_StopTransmit value)? stopTransmit,
-    required TResult orElse(),
-  }) {
-    if (refreshData != null) {
-      return refreshData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RefreshData implements PineEvent {
-  const factory _RefreshData() = _$_RefreshData;
 }
 
 /// @nodoc
@@ -251,7 +137,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function() stopTransmit,
   }) {
@@ -261,7 +146,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function()? stopTransmit,
   }) {
@@ -271,7 +155,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -285,7 +168,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -295,7 +177,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -305,7 +186,6 @@ class _$_StartTransmit implements _StartTransmit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),
@@ -365,7 +245,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() refreshData,
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function() stopTransmit,
   }) {
@@ -375,7 +254,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? refreshData,
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function()? stopTransmit,
   }) {
@@ -385,7 +263,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? refreshData,
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function()? stopTransmit,
     required TResult orElse(),
@@ -399,7 +276,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_StopTransmit value) stopTransmit,
   }) {
@@ -409,7 +285,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_StopTransmit value)? stopTransmit,
   }) {
@@ -419,7 +294,6 @@ class _$_StopTransmit implements _StopTransmit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RefreshData value)? refreshData,
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_StopTransmit value)? stopTransmit,
     required TResult orElse(),

@@ -7,9 +7,6 @@ import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:secret_pine/model/data_event_model.dart';
-import 'package:secret_pine/model/device_event_model.dart';
 import 'package:secret_pine/model/device_model.dart';
 import 'package:secret_pine/repository/constants.dart';
 import 'package:secret_pine/repository/pine/pine_repository.dart';
@@ -20,22 +17,9 @@ class NearbyPineRepository extends PineRepository {
   final Map<String, ConnectionInfo> _endpoints = {};
   final Map<String, DeviceModel> _devices = {};
 
-  final _devicesSubject = BehaviorSubject<DeviceEventModel>();
-  final _dataSubject = BehaviorSubject<DataEventModel>();
-
   Box<String>? _messageBox;
-  Box<String>? _imageBox;
 
   String? _tempFileUri;
-
-  // @override
-  // List<DeviceModel> get devices => _devices.values.toList();
-
-  // @override
-  // Stream<DeviceEventModel> get devicesStream => _devicesSubject.stream;
-
-  // @override
-  // Stream<DataEventModel> get dataStream => _dataSubject.stream;
 
   @override
   final String userName = Constants.pine;
@@ -43,7 +27,6 @@ class NearbyPineRepository extends PineRepository {
   @override
   Future<void> start() async {
     _messageBox = await Hive.openBox('messages');
-    _imageBox = await Hive.openBox('image');
 
     await _advertiseNearby();
   }
@@ -60,10 +43,6 @@ class NearbyPineRepository extends PineRepository {
     await stop();
 
     await _messageBox?.close();
-    await _imageBox?.close();
-
-    await _devicesSubject.close();
-    await _dataSubject.close();
   }
 
   Future<void> _advertiseNearby() async {
@@ -72,16 +51,8 @@ class NearbyPineRepository extends PineRepository {
       Strategy.P2P_POINT_TO_POINT,
       serviceId: Constants.channel,
       onConnectionInitiated: _acceptConnection,
-      onConnectionResult: (id, status) {
-        if (_devices.containsKey(id)) {
-          _devicesSubject.add(DeviceEventModel.connected(device: _devices[id]!));
-        }
-      },
+      onConnectionResult: (id, status) {},
       onDisconnected: (id) {
-        if (_devices.containsKey(id)) {
-          _devicesSubject.add(DeviceEventModel.disconnected(device: _devices[id]!));
-        }
-
         _endpoints.remove(id);
         _devices.remove(id);
       },
@@ -110,9 +81,7 @@ class NearbyPineRepository extends PineRepository {
                     await _sendMessages(id);
                   }
                 }
-              } catch (ex) {
-                print(ex);
-              }
+              } catch (ex) {}
             } else if (payload.type == PayloadType.FILE && payload.uri != null) {
               _tempFileUri = payload.uri;
             }
@@ -127,18 +96,17 @@ class NearbyPineRepository extends PineRepository {
                 try {
                   final file = File(lastImagePath);
                   await file.delete();
-                } catch (ex) {
-                  print(ex);
-                }
+                } catch (ex) {}
 
                 await _nearby.copyFileAndDeleteOriginal(_tempFileUri!, await _lastImageUri);
 
+                for (final id in _endpoints.keys) {
+                  await _sendImage(id);
+                }
+
                 _tempFileUri = null;
               }
-            } catch (ex) {
-              print(ex);
-              //
-            }
+            } catch (ex) {}
           }
         },
       );
@@ -168,12 +136,7 @@ class NearbyPineRepository extends PineRepository {
 
   Future<void> _sendImage(String id) async {
     try {
-      // final lastImage = _imageBox?.get('last_image');
-      // final dir = await getExternalStorageDirectory();
-
       await _nearby.sendFilePayload(id, await _lastImageUri);
-    } catch (ex) {
-      print(ex);
-    }
+    } catch (ex) {}
   }
 }

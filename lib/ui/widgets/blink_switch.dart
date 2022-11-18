@@ -23,7 +23,7 @@ class BlinkSwitch extends StatelessWidget {
           isOn: isTransmitting && !isLoading,
           color: Colors.green,
           child: Transform.scale(
-            scale: 2.0,
+            scale: 1.5,
             child: CupertinoSwitch(
               value: isTransmitting,
               trackColor: Colors.red,
@@ -32,7 +32,7 @@ class BlinkSwitch extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 34),
+        const SizedBox(height: 20),
         Text(
           isLoading
               ? 'Подключаемся...'
@@ -41,7 +41,7 @@ class BlinkSwitch extends StatelessWidget {
                   : 'Не в эфире',
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 20,
           ),
         ),
       ],

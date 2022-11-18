@@ -47,7 +47,14 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Secret Pine',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          inputDecorationTheme: const InputDecorationTheme(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 0.5, color: Colors.white),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 0.5, color: Colors.white),
+            ),
+          ),
         ),
         home: const StartPage(),
       ),

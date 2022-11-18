@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:secret_pine/bloc/human/human_bloc.dart';
+import 'package:secret_pine/ui/pages/info/info_page.dart';
 import 'package:secret_pine/ui/widgets/blink_switch.dart';
 
 class HumanPage extends StatefulWidget {
@@ -32,21 +31,22 @@ class _HumanPageState extends State<HumanPage> {
     final nearby = Nearby();
 
     nearby.askBluetoothPermission();
-    nearby.askLocationPermission();
+    nearby.askLocationAndExternalStoragePermission();
   }
 
   void _startTransmit() {
     context.read<HumanBloc>().add(HumanEvent.startTransmit(onError: _showError));
   }
 
-  void _refresh() {
-    context.read<HumanBloc>().add(const HumanEvent.sendDataRequest());
-  }
-
   void _sendMessage() {
     final text = _controller.text.trim();
+
     if (text.isNotEmpty) {
-      context.read<HumanBloc>().add(HumanEvent.sendMessage(message: text));
+      context
+          .read<HumanBloc>()
+          .add(HumanEvent.sendMessage(message: text, onError: () => _showError(error: 'Ошибка отправки сообщения')));
+
+      _controller.clear();
     }
   }
 
@@ -55,19 +55,21 @@ class _HumanPageState extends State<HumanPage> {
   }
 
   Future<void> _sendImage() async {
+    final bloc = context.read<HumanBloc>();
     try {
       final image = await ImagePicker().pickImage(
         source: ImageSource.gallery,
-        imageQuality: 50,
-        maxWidth: 256,
-        maxHeight: 256,
+        imageQuality: 70,
+        maxWidth: 512,
+        maxHeight: 512,
       );
 
       if (image != null) {
-        context.read<HumanBloc>().add(HumanEvent.sendImage(imagePath: image.path));
+        bloc.add(
+          HumanEvent.sendImage(imagePath: image.path, onError: () => _showError(error: 'Ошибка отправки картинки')),
+        );
       }
     } catch (ex) {
-      print(ex);
       _showError(error: 'Ошибка отправки картинки');
     }
   }
@@ -85,10 +87,10 @@ class _HumanPageState extends State<HumanPage> {
   }
 
   void _showInfo() {
-    // showModalBottomSheet(
-    //   context: context,
-    //   builder: (_) => const InfoPage(),
-    // );
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => const InfoPage(),
+    );
   }
 
   @override
@@ -107,22 +109,51 @@ class _HumanPageState extends State<HumanPage> {
         backgroundColor: Colors.black,
         body: SizedBox(
           width: MediaQuery.of(context).size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 20),
-              BlocBuilder<HumanBloc, HumanState>(
-                builder: (_, state) => Expanded(
-                  child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 30),
+                BlocBuilder<HumanBloc, HumanState>(
+                  builder: (_, state) => BlinkSwitch(
+                    isLoading: state.isLoading,
+                    isTransmitting: state.isTransmitting,
+                    onChanged: (value) => value ? _startTransmit() : _stopTransmit(),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                BlocBuilder<HumanBloc, HumanState>(
+                  builder: (_, state) => state.image != null
+                      ? Image.file(
+                          state.image!,
+                          key: ValueKey(state.image!.hashCode),
+                          errorBuilder: (_, __, ___) => const SizedBox(),
+                          height: MediaQuery.of(context).size.height * 0.15,
+                        )
+                      : const SizedBox(),
+                ),
+                TextButton(
+                  onPressed: _sendImage,
+                  child: const Text(
+                    'Отправить картинку',
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                BlocBuilder<HumanBloc, HumanState>(
+                  builder: (_, state) => Column(
                     children: [
                       if (state.messages.isNotEmpty)
                         const Text(
-                          'Список сообщений',
+                          'Список последних сообщений',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                      Expanded(
-                        child: ListView(
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: state.messages
                               .map(
                                 (message) => Text(
@@ -136,35 +167,34 @@ class _HumanPageState extends State<HumanPage> {
                     ],
                   ),
                 ),
-              ),
-              BlocBuilder<HumanBloc, HumanState>(
-                builder: (_, state) => state.image != null
-                    ? Image.file(
-                        state.image!,
-                        key: ValueKey(state.image!.hashCode),
-                      )
-                    : const SizedBox(),
-              ),
-              BlocBuilder<HumanBloc, HumanState>(
-                builder: (_, state) => BlinkSwitch(
-                  isLoading: state.isLoading,
-                  isTransmitting: state.isTransmitting,
-                  onChanged: (value) => value ? _startTransmit() : _stopTransmit(),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    const SizedBox(width: 32),
+                    Flexible(
+                      child: TextField(
+                        controller: _controller,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          hintText: 'Введите сообщение',
+                          hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    TextButton(
+                      onPressed: _sendMessage,
+                      child: const Text(
+                        'Отправить',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _controller,
-                style: const TextStyle(color: Colors.white),
-              ),
-              const SizedBox(height: 20),
-              TextButton(onPressed: _sendMessage, child: const Text('Отправить')),
-              const SizedBox(height: 20),
-              TextButton(onPressed: _refresh, child: const Text('Обновить')),
-              const SizedBox(height: 20),
-              TextButton(onPressed: _sendImage, child: const Text('Отправить картинку')),
-              const SizedBox(height: 50),
-            ],
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),

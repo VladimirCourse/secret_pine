@@ -19,9 +19,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
   HumanBloc({required this.humanRepository}) : super(HumanState(name: humanRepository.userName)) {
     _deviceSubscription = humanRepository.devicesStream.listen((event) async {
       event.mapOrNull(
-        connected: (event) {
-          add(const HumanEvent.sendDataRequest());
-        },
+        connected: (event) => add(const HumanEvent.sendDataRequest()),
       );
     });
 
@@ -49,6 +47,8 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
 
       emit(state.copyWith(isLoading: false));
     } catch (ex) {
+      event.onError();
+
       emit(state.copyWith(isTransmitting: false, isLoading: false));
     }
   }
@@ -60,10 +60,9 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
   void _handleRefreshImage(_RefreshImage event, Emitter<HumanState> emit) async {
     try {
       await FileImage(File(event.imagePath)).evict();
+
       emit(state.copyWith(image: File(event.imagePath), isConnected: true));
-    } catch (ex) {
-      print(ex);
-    }
+    } catch (ex) {}
   }
 
   void _handleSendDataRequest(_SendDataRequest event, Emitter<HumanState> emit) async {
@@ -71,7 +70,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
       await humanRepository.sendMessagesRequest();
       await humanRepository.sendImageRequest();
     } catch (ex) {
-      print(ex);
+      event.onError?.call();
     }
   }
 
@@ -79,7 +78,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     try {
       await humanRepository.sendMessage(event.message);
     } catch (ex) {
-      print(ex);
+      event.onError();
     }
   }
 
@@ -87,7 +86,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     try {
       await humanRepository.sendImage(event.imagePath);
     } catch (ex) {
-      print(ex);
+      event.onError();
     }
   }
 

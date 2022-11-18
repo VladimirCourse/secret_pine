@@ -11,16 +11,8 @@ part 'pine_state.dart';
 class PineBloc extends Bloc<PineEvent, PineState> {
   final PineRepository pineRepository;
 
-  StreamSubscription? _dataSubscription;
-
   PineBloc({required this.pineRepository}) : super(PineState(name: pineRepository.userName)) {
-    // _dataSubscription = transmitRepository.dataStream.listen((event) async {
-    //   print(event);
-    //   event.mapOrNull();
-    // });
-
     on<_StartTransmit>(_handleStartTransmit);
-    on<_RefreshData>(_handleRefreshData);
     on<_StopTransmit>(_handleStopTransmit);
   }
 
@@ -32,11 +24,11 @@ class PineBloc extends Bloc<PineEvent, PineState> {
 
       emit(state.copyWith(isLoading: false));
     } catch (ex) {
+      event.onError();
+
       emit(state.copyWith(isTransmitting: false, isLoading: false));
     }
   }
-
-  void _handleRefreshData(_RefreshData event, Emitter<PineState> emit) async {}
 
   void _handleStopTransmit(_StopTransmit event, Emitter<PineState> emit) async {
     try {
@@ -50,8 +42,6 @@ class PineBloc extends Bloc<PineEvent, PineState> {
 
   @override
   Future<void> close() async {
-    await _dataSubscription?.cancel();
-
     await pineRepository.stop();
 
     super.close();

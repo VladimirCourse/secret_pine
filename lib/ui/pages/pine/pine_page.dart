@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:secret_pine/bloc/pine/pine_bloc.dart';
+import 'package:secret_pine/ui/pages/info/info_page.dart';
 import 'package:secret_pine/ui/widgets/blink_switch.dart';
 
 class PinePage extends StatefulWidget {
@@ -51,10 +52,10 @@ class _PinePageState extends State<PinePage> {
   }
 
   void _showInfo() {
-    // showModalBottomSheet(
-    //   context: context,
-    //   builder: (_) => const InfoPage(),
-    // );
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => const InfoPage(),
+    );
   }
 
   @override

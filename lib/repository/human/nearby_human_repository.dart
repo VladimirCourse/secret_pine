@@ -79,6 +79,7 @@ class NearbyHumanRepository extends HumanRepository {
     await _nearby.stopAdvertising();
 
     _dataSubject.add(const DataEventModel.messages(messages: []));
+    _dataSubject.add(const DataEventModel.image(imagePath: ''));
   }
 
   @override
@@ -176,9 +177,7 @@ class NearbyHumanRepository extends HumanRepository {
                   try {
                     final file = File(lastImagePath);
                     await file.delete();
-                  } catch (ex) {
-                    print(ex);
-                  }
+                  } catch (ex) {}
 
                   await _nearby.copyFileAndDeleteOriginal(_tempFileUri!, lastImagePath);
 
@@ -186,9 +185,7 @@ class NearbyHumanRepository extends HumanRepository {
 
                   _tempFileUri = null;
                 }
-              } catch (ex) {
-                print(ex);
-              }
+              } catch (ex) {}
             }
           },
         );

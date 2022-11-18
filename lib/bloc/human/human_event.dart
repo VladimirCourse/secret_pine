@@ -10,11 +10,11 @@ class HumanEvent with _$HumanEvent {
 
   const factory HumanEvent.refreshImage({required String imagePath}) = _RefreshImage;
 
-  const factory HumanEvent.sendMessage({required String message}) = _SendMessage;
+  const factory HumanEvent.sendMessage({required String message, required ErrorCallback onError}) = _SendMessage;
 
-  const factory HumanEvent.sendImage({required String imagePath}) = _SendImage;
+  const factory HumanEvent.sendImage({required String imagePath, required ErrorCallback onError}) = _SendImage;
 
-  const factory HumanEvent.sendDataRequest() = _SendDataRequest;
+  const factory HumanEvent.sendDataRequest({ErrorCallback? onError}) = _SendDataRequest;
 
   const factory HumanEvent.stopTransmit() = _StopTransmit;
 }

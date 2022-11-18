@@ -69,8 +69,8 @@ class _BlinkIndicatorState extends State<BlinkIndicator> with SingleTickerProvid
             ? [
                 BoxShadow(
                   color: widget.color,
-                  blurRadius: 40,
-                  spreadRadius: 10 + _controller.value * 15,
+                  blurRadius: 30,
+                  spreadRadius: 5 + _controller.value * 15,
                 ),
               ]
             : null,
