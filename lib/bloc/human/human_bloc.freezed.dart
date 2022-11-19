@@ -21,6 +21,7 @@ mixin _$HumanEvent {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -34,6 +35,7 @@ mixin _$HumanEvent {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -45,6 +47,7 @@ mixin _$HumanEvent {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -57,6 +60,7 @@ mixin _$HumanEvent {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -68,6 +72,7 @@ mixin _$HumanEvent {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -79,6 +84,7 @@ mixin _$HumanEvent {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -173,6 +179,7 @@ class _$_StartTransmit implements _StartTransmit {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -189,6 +196,7 @@ class _$_StartTransmit implements _StartTransmit {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -203,6 +211,7 @@ class _$_StartTransmit implements _StartTransmit {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -221,6 +230,7 @@ class _$_StartTransmit implements _StartTransmit {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -235,6 +245,7 @@ class _$_StartTransmit implements _StartTransmit {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -249,6 +260,7 @@ class _$_StartTransmit implements _StartTransmit {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -345,6 +357,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -361,6 +374,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -375,6 +389,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -393,6 +408,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -407,6 +423,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -421,6 +438,7 @@ class _$_RefreshMessages implements _RefreshMessages {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -512,6 +530,7 @@ class _$_RefreshImage implements _RefreshImage {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -528,6 +547,7 @@ class _$_RefreshImage implements _RefreshImage {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -542,6 +562,7 @@ class _$_RefreshImage implements _RefreshImage {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -560,6 +581,7 @@ class _$_RefreshImage implements _RefreshImage {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -574,6 +596,7 @@ class _$_RefreshImage implements _RefreshImage {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -588,6 +611,7 @@ class _$_RefreshImage implements _RefreshImage {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -608,6 +632,177 @@ abstract class _RefreshImage implements HumanEvent {
   String get imagePath;
   @JsonKey(ignore: true)
   _$$_RefreshImageCopyWith<_$_RefreshImage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshRangeCopyWith<$Res> {
+  factory _$$_RefreshRangeCopyWith(
+          _$_RefreshRange value, $Res Function(_$_RefreshRange) then) =
+      __$$_RefreshRangeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int range});
+}
+
+/// @nodoc
+class __$$_RefreshRangeCopyWithImpl<$Res>
+    extends _$HumanEventCopyWithImpl<$Res, _$_RefreshRange>
+    implements _$$_RefreshRangeCopyWith<$Res> {
+  __$$_RefreshRangeCopyWithImpl(
+      _$_RefreshRange _value, $Res Function(_$_RefreshRange) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? range = null,
+  }) {
+    return _then(_$_RefreshRange(
+      range: null == range
+          ? _value.range
+          : range // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RefreshRange implements _RefreshRange {
+  const _$_RefreshRange({required this.range});
+
+  @override
+  final int range;
+
+  @override
+  String toString() {
+    return 'HumanEvent.refreshRange(range: $range)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RefreshRange &&
+            (identical(other.range, range) || other.range == range));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, range);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshRangeCopyWith<_$_RefreshRange> get copyWith =>
+      __$$_RefreshRangeCopyWithImpl<_$_RefreshRange>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ErrorCallback onError) startTransmit,
+    required TResult Function(List<String> messages) refreshMessages,
+    required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
+    required TResult Function(String message, ErrorCallback onError)
+        sendMessage,
+    required TResult Function(String imagePath, ErrorCallback onError)
+        sendImage,
+    required TResult Function(ErrorCallback? onError) sendDataRequest,
+    required TResult Function() stopTransmit,
+  }) {
+    return refreshRange(range);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ErrorCallback onError)? startTransmit,
+    TResult? Function(List<String> messages)? refreshMessages,
+    TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
+    TResult? Function(String message, ErrorCallback onError)? sendMessage,
+    TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
+    TResult? Function(ErrorCallback? onError)? sendDataRequest,
+    TResult? Function()? stopTransmit,
+  }) {
+    return refreshRange?.call(range);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ErrorCallback onError)? startTransmit,
+    TResult Function(List<String> messages)? refreshMessages,
+    TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
+    TResult Function(String message, ErrorCallback onError)? sendMessage,
+    TResult Function(String imagePath, ErrorCallback onError)? sendImage,
+    TResult Function(ErrorCallback? onError)? sendDataRequest,
+    TResult Function()? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshRange != null) {
+      return refreshRange(range);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartTransmit value) startTransmit,
+    required TResult Function(_RefreshMessages value) refreshMessages,
+    required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_SendDataRequest value) sendDataRequest,
+    required TResult Function(_StopTransmit value) stopTransmit,
+  }) {
+    return refreshRange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartTransmit value)? startTransmit,
+    TResult? Function(_RefreshMessages value)? refreshMessages,
+    TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_SendDataRequest value)? sendDataRequest,
+    TResult? Function(_StopTransmit value)? stopTransmit,
+  }) {
+    return refreshRange?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartTransmit value)? startTransmit,
+    TResult Function(_RefreshMessages value)? refreshMessages,
+    TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_SendDataRequest value)? sendDataRequest,
+    TResult Function(_StopTransmit value)? stopTransmit,
+    required TResult orElse(),
+  }) {
+    if (refreshRange != null) {
+      return refreshRange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshRange implements HumanEvent {
+  const factory _RefreshRange({required final int range}) = _$_RefreshRange;
+
+  int get range;
+  @JsonKey(ignore: true)
+  _$$_RefreshRangeCopyWith<_$_RefreshRange> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -686,6 +881,7 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -702,6 +898,7 @@ class _$_SendMessage implements _SendMessage {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -716,6 +913,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -734,6 +932,7 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -748,6 +947,7 @@ class _$_SendMessage implements _SendMessage {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -762,6 +962,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -863,6 +1064,7 @@ class _$_SendImage implements _SendImage {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -879,6 +1081,7 @@ class _$_SendImage implements _SendImage {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -893,6 +1096,7 @@ class _$_SendImage implements _SendImage {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -911,6 +1115,7 @@ class _$_SendImage implements _SendImage {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -925,6 +1130,7 @@ class _$_SendImage implements _SendImage {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -939,6 +1145,7 @@ class _$_SendImage implements _SendImage {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -1031,6 +1238,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -1047,6 +1255,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -1061,6 +1270,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -1079,6 +1289,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -1093,6 +1304,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -1107,6 +1319,7 @@ class _$_SendDataRequest implements _SendDataRequest {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -1171,6 +1384,7 @@ class _$_StopTransmit implements _StopTransmit {
     required TResult Function(ErrorCallback onError) startTransmit,
     required TResult Function(List<String> messages) refreshMessages,
     required TResult Function(String imagePath) refreshImage,
+    required TResult Function(int range) refreshRange,
     required TResult Function(String message, ErrorCallback onError)
         sendMessage,
     required TResult Function(String imagePath, ErrorCallback onError)
@@ -1187,6 +1401,7 @@ class _$_StopTransmit implements _StopTransmit {
     TResult? Function(ErrorCallback onError)? startTransmit,
     TResult? Function(List<String> messages)? refreshMessages,
     TResult? Function(String imagePath)? refreshImage,
+    TResult? Function(int range)? refreshRange,
     TResult? Function(String message, ErrorCallback onError)? sendMessage,
     TResult? Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult? Function(ErrorCallback? onError)? sendDataRequest,
@@ -1201,6 +1416,7 @@ class _$_StopTransmit implements _StopTransmit {
     TResult Function(ErrorCallback onError)? startTransmit,
     TResult Function(List<String> messages)? refreshMessages,
     TResult Function(String imagePath)? refreshImage,
+    TResult Function(int range)? refreshRange,
     TResult Function(String message, ErrorCallback onError)? sendMessage,
     TResult Function(String imagePath, ErrorCallback onError)? sendImage,
     TResult Function(ErrorCallback? onError)? sendDataRequest,
@@ -1219,6 +1435,7 @@ class _$_StopTransmit implements _StopTransmit {
     required TResult Function(_StartTransmit value) startTransmit,
     required TResult Function(_RefreshMessages value) refreshMessages,
     required TResult Function(_RefreshImage value) refreshImage,
+    required TResult Function(_RefreshRange value) refreshRange,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
     required TResult Function(_SendDataRequest value) sendDataRequest,
@@ -1233,6 +1450,7 @@ class _$_StopTransmit implements _StopTransmit {
     TResult? Function(_StartTransmit value)? startTransmit,
     TResult? Function(_RefreshMessages value)? refreshMessages,
     TResult? Function(_RefreshImage value)? refreshImage,
+    TResult? Function(_RefreshRange value)? refreshRange,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
     TResult? Function(_SendDataRequest value)? sendDataRequest,
@@ -1247,6 +1465,7 @@ class _$_StopTransmit implements _StopTransmit {
     TResult Function(_StartTransmit value)? startTransmit,
     TResult Function(_RefreshMessages value)? refreshMessages,
     TResult Function(_RefreshImage value)? refreshImage,
+    TResult Function(_RefreshRange value)? refreshRange,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
     TResult Function(_SendDataRequest value)? sendDataRequest,
@@ -1271,6 +1490,7 @@ mixin _$HumanState {
   bool get isTransmitting => throw _privateConstructorUsedError;
   dynamic get isConnected => throw _privateConstructorUsedError;
   List<String> get messages => throw _privateConstructorUsedError;
+  bool get isClose => throw _privateConstructorUsedError;
   File? get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1290,6 +1510,7 @@ abstract class $HumanStateCopyWith<$Res> {
       bool isTransmitting,
       dynamic isConnected,
       List<String> messages,
+      bool isClose,
       File? image});
 }
 
@@ -1311,6 +1532,7 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
     Object? isTransmitting = null,
     Object? isConnected = null,
     Object? messages = null,
+    Object? isClose = null,
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1334,6 +1556,10 @@ class _$HumanStateCopyWithImpl<$Res, $Val extends HumanState>
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isClose: null == isClose
+          ? _value.isClose
+          : isClose // ignore: cast_nullable_to_non_nullable
+              as bool,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1354,6 +1580,7 @@ abstract class _$$_DataCopyWith<$Res> implements $HumanStateCopyWith<$Res> {
       bool isTransmitting,
       dynamic isConnected,
       List<String> messages,
+      bool isClose,
       File? image});
 }
 
@@ -1372,6 +1599,7 @@ class __$$_DataCopyWithImpl<$Res>
     Object? isTransmitting = null,
     Object? isConnected = null,
     Object? messages = null,
+    Object? isClose = null,
     Object? image = freezed,
   }) {
     return _then(_$_Data(
@@ -1392,6 +1620,10 @@ class __$$_DataCopyWithImpl<$Res>
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isClose: null == isClose
+          ? _value.isClose
+          : isClose // ignore: cast_nullable_to_non_nullable
+              as bool,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1409,6 +1641,7 @@ class _$_Data implements _Data {
       this.isTransmitting = false,
       this.isConnected = false,
       final List<String> messages = const [],
+      this.isClose = false,
       this.image})
       : _messages = messages;
 
@@ -1432,11 +1665,14 @@ class _$_Data implements _Data {
   }
 
   @override
+  @JsonKey()
+  final bool isClose;
+  @override
   final File? image;
 
   @override
   String toString() {
-    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting, isConnected: $isConnected, messages: $messages, image: $image)';
+    return 'HumanState(name: $name, isLoading: $isLoading, isTransmitting: $isTransmitting, isConnected: $isConnected, messages: $messages, isClose: $isClose, image: $image)';
   }
 
   @override
@@ -1452,6 +1688,7 @@ class _$_Data implements _Data {
             const DeepCollectionEquality()
                 .equals(other.isConnected, isConnected) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.isClose, isClose) || other.isClose == isClose) &&
             (identical(other.image, image) || other.image == image));
   }
 
@@ -1463,6 +1700,7 @@ class _$_Data implements _Data {
       isTransmitting,
       const DeepCollectionEquality().hash(isConnected),
       const DeepCollectionEquality().hash(_messages),
+      isClose,
       image);
 
   @JsonKey(ignore: true)
@@ -1479,6 +1717,7 @@ abstract class _Data implements HumanState {
       final bool isTransmitting,
       final dynamic isConnected,
       final List<String> messages,
+      final bool isClose,
       final File? image}) = _$_Data;
 
   @override
@@ -1491,6 +1730,8 @@ abstract class _Data implements HumanState {
   dynamic get isConnected;
   @override
   List<String> get messages;
+  @override
+  bool get isClose;
   @override
   File? get image;
   @override

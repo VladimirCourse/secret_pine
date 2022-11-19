@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nearby_connections/nearby_connections.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:secret_pine/bloc/info/info_bloc.dart';
 import 'package:secret_pine/bloc/pine/pine_bloc.dart';
 import 'package:secret_pine/ui/pages/info/info_page.dart';
 import 'package:secret_pine/ui/widgets/blink_switch.dart';
@@ -24,11 +26,21 @@ class _PinePageState extends State<PinePage> {
     }
   }
 
-  void _askPermissions() {
-    final nearby = Nearby();
-
-    nearby.askBluetoothPermission();
-    nearby.askLocationAndExternalStoragePermission();
+  Future<void> _askPermissions() async {
+    try {
+      await [
+        Permission.bluetooth,
+        Permission.bluetoothAdvertise,
+        Permission.bluetoothConnect,
+        Permission.bluetoothScan,
+        Permission.manageExternalStorage,
+        Permission.storage,
+        Permission.location,
+        Permission.nearbyWifiDevices,
+      ].request();
+    } catch (ex) {
+      _showError();
+    }
   }
 
   void _startTransmit() {
@@ -54,7 +66,12 @@ class _PinePageState extends State<PinePage> {
   void _showInfo() {
     showModalBottomSheet(
       context: context,
-      builder: (_) => const InfoPage(),
+      builder: (_) => BlocProvider(
+        create: (_) => InfoBloc(
+          humanRepository: context.read(),
+        ),
+        child: const InfoPage(),
+      ),
     );
   }
 
@@ -81,6 +98,11 @@ class _PinePageState extends State<PinePage> {
               const SizedBox(height: 20),
               BlocBuilder<PineBloc, PineState>(
                 builder: (_, state) => BlinkSwitch(
+                  title: state.isLoading
+                      ? 'Подключаемся...'
+                      : state.isTransmitting
+                          ? 'В эфире'
+                          : 'Не в эфире',
                   isLoading: state.isLoading,
                   isTransmitting: state.isTransmitting,
                   onChanged: (value) => value ? _startTransmit() : _stopTransmit(),

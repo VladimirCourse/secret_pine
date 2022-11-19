@@ -4,11 +4,17 @@ import 'package:secret_pine/model/device_event_model.dart';
 abstract class HumanRepository {
   String get userName;
 
+  bool get isRangeCheckEnabled;
+
+  set isRangeCheckEnabled(bool value);
+
   bool get isConnected;
 
   Stream<DeviceEventModel> get devicesStream;
 
   Stream<DataEventModel> get dataStream;
+
+  Stream<int> get rangeStream;
 
   Future<void> start();
 

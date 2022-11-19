@@ -10,6 +10,8 @@ class HumanEvent with _$HumanEvent {
 
   const factory HumanEvent.refreshImage({required String imagePath}) = _RefreshImage;
 
+  const factory HumanEvent.refreshRange({required int range}) = _RefreshRange;
+
   const factory HumanEvent.sendMessage({required String message, required ErrorCallback onError}) = _SendMessage;
 
   const factory HumanEvent.sendImage({required String imagePath, required ErrorCallback onError}) = _SendImage;

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:nearby_connections/nearby_connections.dart';
@@ -12,13 +14,26 @@ import 'package:secret_pine/repository/constants.dart';
 import 'package:secret_pine/repository/pine/pine_repository.dart';
 
 class NearbyPineRepository extends PineRepository {
+  final _blePeripheral = FlutterBlePeripheral();
+
+  late final _advertiseData = AdvertiseData(
+    serviceUuid: Constants.serviceId,
+    includePowerLevel: true,
+  );
+
+  final _advertiseSettings = AdvertiseSettings(
+    advertiseMode: AdvertiseMode.advertiseModeBalanced,
+    txPowerLevel: AdvertiseTxPower.advertiseTxPowerHigh,
+    timeout: 0,
+    connectable: true,
+  );
+
   final _nearby = Nearby();
 
   final Map<String, ConnectionInfo> _endpoints = {};
   final Map<String, DeviceModel> _devices = {};
 
   Box<String>? _messageBox;
-
   String? _tempFileUri;
 
   @override
@@ -29,6 +44,13 @@ class NearbyPineRepository extends PineRepository {
     _messageBox = await Hive.openBox('messages');
 
     await _advertiseNearby();
+
+    if (!await _blePeripheral.isAdvertising) {
+      await _blePeripheral.start(
+        advertiseData: _advertiseData,
+        advertiseSettings: _advertiseSettings,
+      );
+    }
   }
 
   @override
@@ -36,6 +58,10 @@ class NearbyPineRepository extends PineRepository {
     await _nearby.stopDiscovery();
     await _nearby.stopAllEndpoints();
     await _nearby.stopAdvertising();
+
+    if (await _blePeripheral.isAdvertising) {
+      await _blePeripheral.stop();
+    }
   }
 
   @override

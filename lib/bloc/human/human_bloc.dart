@@ -15,6 +15,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
 
   StreamSubscription? _deviceSubscription;
   StreamSubscription? _dataSubscription;
+  StreamSubscription? _rangeSubscription;
 
   HumanBloc({required this.humanRepository}) : super(HumanState(name: humanRepository.userName)) {
     _deviceSubscription = humanRepository.devicesStream.listen((event) async {
@@ -30,9 +31,14 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
       );
     });
 
+    _rangeSubscription = humanRepository.rangeStream.listen((event) async {
+      add(HumanEvent.refreshRange(range: event));
+    });
+
     on<_StartTransmit>(_handleStartTransmit);
-    on<_RefreshMessages>(_handleRefresMessages);
+    on<_RefreshMessages>(_handleRefreshMessages);
     on<_RefreshImage>(_handleRefreshImage);
+    on<_RefreshRange>(_handleRefreshRange);
     on<_SendDataRequest>(_handleSendDataRequest);
     on<_SendMessage>(_handleSendMessage);
     on<_SendImage>(_handleSendImage);
@@ -53,7 +59,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     }
   }
 
-  void _handleRefresMessages(_RefreshMessages event, Emitter<HumanState> emit) async {
+  void _handleRefreshMessages(_RefreshMessages event, Emitter<HumanState> emit) async {
     emit(state.copyWith(messages: event.messages, isConnected: true));
   }
 
@@ -65,10 +71,16 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     } catch (ex) {}
   }
 
+  void _handleRefreshRange(_RefreshRange event, Emitter<HumanState> emit) async {
+    emit(state.copyWith(isClose: event.range <= 60 || !humanRepository.isRangeCheckEnabled));
+  }
+
   void _handleSendDataRequest(_SendDataRequest event, Emitter<HumanState> emit) async {
     try {
       await humanRepository.sendMessagesRequest();
       await humanRepository.sendImageRequest();
+
+      emit(state.copyWith(isConnected: true));
     } catch (ex) {
       event.onError?.call();
     }
@@ -94,7 +106,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
     try {
       await humanRepository.stop();
 
-      emit(state.copyWith(isTransmitting: false));
+      emit(state.copyWith(isTransmitting: false, isConnected: false, isClose: false));
     } catch (ex) {
       emit(state.copyWith(isTransmitting: true));
     }
@@ -104,6 +116,7 @@ class HumanBloc extends Bloc<HumanEvent, HumanState> {
   Future<void> close() async {
     await _dataSubscription?.cancel();
     await _deviceSubscription?.cancel();
+    await _rangeSubscription?.cancel();
 
     await humanRepository.stop();
 

@@ -5,12 +5,14 @@ import 'package:secret_pine/ui/widgets/blink_indicator.dart';
 class BlinkSwitch extends StatelessWidget {
   final bool isTransmitting;
   final bool isLoading;
+  final String title;
   final ValueChanged<bool> onChanged;
 
   const BlinkSwitch({
     super.key,
     required this.isTransmitting,
     required this.isLoading,
+    required this.title,
     required this.onChanged,
   });
 
@@ -34,11 +36,7 @@ class BlinkSwitch extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          isLoading
-              ? 'Подключаемся...'
-              : isTransmitting
-                  ? 'В эфире'
-                  : 'Не в эфире',
+          title,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,

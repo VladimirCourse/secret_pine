@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:collection/collection.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
@@ -14,15 +16,21 @@ import 'package:secret_pine/repository/human/human_repository.dart';
 
 class NearbyHumanRepository extends HumanRepository {
   final _nearby = Nearby();
+  final _flutterBlue = FlutterBluePlus.instance;
 
   final _devicesSubject = BehaviorSubject<DeviceEventModel>();
   final _dataSubject = BehaviorSubject<DataEventModel>();
+  final _rangeSubject = BehaviorSubject<int>.seeded(100);
 
   String? _pineId;
   ConnectionInfo? _pineConnection;
   String? _tempFileUri;
+  StreamSubscription? _subscription;
 
   NearbyHumanRepository({required this.userName});
+
+  @override
+  bool isRangeCheckEnabled = true;
 
   @override
   bool get isConnected => _pineConnection != null;
@@ -34,11 +42,18 @@ class NearbyHumanRepository extends HumanRepository {
   Stream<DataEventModel> get dataStream => _dataSubject.stream;
 
   @override
+  Stream<int> get rangeStream => _rangeSubject.stream;
+
+  @override
   final String userName;
 
   @override
   Future<void> start() async {
     await _discoverNearby();
+
+    if (isRangeCheckEnabled) {
+      await _scanBLE();
+    }
   }
 
   @override
@@ -78,8 +93,12 @@ class NearbyHumanRepository extends HumanRepository {
     await _nearby.stopAllEndpoints();
     await _nearby.stopAdvertising();
 
+    _flutterBlue.stopScan();
+    _subscription?.cancel();
+
     _dataSubject.add(const DataEventModel.messages(messages: []));
     _dataSubject.add(const DataEventModel.image(imagePath: ''));
+    _rangeSubject.add(100);
   }
 
   @override
@@ -88,6 +107,7 @@ class NearbyHumanRepository extends HumanRepository {
 
     await _devicesSubject.close();
     await _dataSubject.close();
+    await _rangeSubject.close();
   }
 
   Future<String?> get _lastImageUri async {
@@ -96,6 +116,20 @@ class NearbyHumanRepository extends HumanRepository {
     } catch (ex) {
       return null;
     }
+  }
+
+  Future<void> _scanBLE() async {
+    _subscription = _flutterBlue.scanResults.listen((results) {
+      final devices = results
+          .where((e) => DateTime.now().difference(e.timeStamp).inSeconds < 3)
+          .where((e) => e.advertisementData.serviceUuids.firstOrNull?.startsWith(Constants.serviceId) ?? false);
+
+      if (devices.isNotEmpty) {
+        _rangeSubject.add(devices.first.rssi.abs());
+      }
+    });
+
+    _flutterBlue.startScan(timeout: const Duration(minutes: 5), allowDuplicates: true).onError((error, stackTrace) {});
   }
 
   Future<void> _discoverNearby() async {
